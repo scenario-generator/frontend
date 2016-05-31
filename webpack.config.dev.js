@@ -13,6 +13,9 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/static/'
   },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+  },
   plugins: [
     /**
      * This is where the magic happens! You need this to enable Hot Module Replacement!

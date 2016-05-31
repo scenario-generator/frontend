@@ -1,0 +1,1 @@
+export default 'http://scenario-generator-api.herokuapp.com/';
