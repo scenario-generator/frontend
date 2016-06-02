@@ -1,4 +1,5 @@
 import { REQUEST_SCENARIO, RECEIVE_SCENARIO } from '../constants/ActionTypes';
+import 'whatwg-fetch'
 
 const initialState = {
   isFetching: false,

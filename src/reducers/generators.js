@@ -1,4 +1,5 @@
 import { REQUEST_GENERATORS, RECEIVE_GENERATORS } from '../constants/ActionTypes';
+import 'whatwg-fetch'
 
 const initialState = {
   isFetching: false,
