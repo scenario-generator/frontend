@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { Link } from 'react-router'
+import Styles from './styles'
 
 export default class Sidebar extends Component {
   componentDidMount() {
@@ -7,7 +9,12 @@ export default class Sidebar extends Component {
 
   renderGenerator(generator) {
     return (
-      <div key={generator.id}>{generator.id}: {generator.subject.name}</div>
+      <Link
+        to={`/generators/${generator.id}`}
+        key={generator.id}
+        style={Styles.link}>
+        {generator.id}: {generator.subject.name}
+      </Link>
     )
   }
 
