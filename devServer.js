@@ -13,6 +13,10 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));
 
+app.get(/images/, (req, res) => {
+  res.sendFile(path.join(__dirname, req.originalUrl))
+})
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
