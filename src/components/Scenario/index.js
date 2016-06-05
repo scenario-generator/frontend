@@ -3,6 +3,7 @@ import Radium from 'radium'
 import _ from 'lodash'
 import DocumentTitle from 'react-document-title'
 import Strings from '../../constants/strings'
+import Colors from '../../constants/styles/colors'
 import ImagePath from '../../constants/styles/images'
 import Styles from './styles'
 
@@ -33,9 +34,19 @@ export default Radium(class Scenario extends Component {
   backgroundStyles() {
     let backgroundImageStyles;
     if(this.props.generator) {
-      let imagified_name = `${this.props.generator.subject.name.replace(/\s+/g, '_').toLowerCase()}.jpg`
+      let imagifiedName = `${this.props.generator.subject.name.replace(/\s+/g, '_').toLowerCase()}.jpg`
+      let imagePath = ImagePath(imagifiedName)
       backgroundImageStyles = {
-        backgroundImage: ImagePath(imagified_name)
+        height: '100%',
+        backgroundColor: Colors.blue.primary,
+        backgroundSize: 'contain',
+        backgroundPosition: '0 0',
+        backgroundRepeat: 'no-repeat',
+        backgroundImage: imagePath,
+        backgroundImage: `-moz-linear-gradient(top, transparent 0%, ${Colors.blue.primary} 50%), ${imagePath}`,
+        backgroundImage: `-webkit-gradient(linear, left top, left bottom, color-stop(0%, transparent), color-stop(50%, ${Colors.blue.primary})), ${imagePath}`,
+        backgroundImage: `linear-gradient(to bottom, transparent, ${Colors.blue.primary}, ${Colors.blue.primary}), ${imagePath}`,
+        filter: `progid:DXImageTransform.Microsoft.gradient(startColorstr='transparent', endColorstr='${Colors.blue.primary}', GradientType=0)`
       }
     }
     return [

@@ -45,6 +45,7 @@
     "webpack-hot-middleware": "^2.6.0"
   },
   "dependencies": {
+    "copy-webpack-plugin": "^3.0.1",
     "lodash": "^4.13.1",
     "radium": "^0.17.1",
     "react": "^0.14.3",
