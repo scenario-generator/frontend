@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -33,7 +34,19 @@ module.exports = {
       compressor: {
         warnings: false
       }
-    })
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: 'images',
+        to: 'images'
+      },
+    ]),
+    new CopyWebpackPlugin([
+      {
+        from: 'index.html',
+        to: 'index.html'
+      },
+    ]),
   ],
   module: {
     loaders: [
