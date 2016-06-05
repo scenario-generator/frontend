@@ -41,12 +41,6 @@ module.exports = {
         to: 'images'
       },
     ]),
-    new CopyWebpackPlugin([
-      {
-        from: 'index.html',
-        to: 'index.html'
-      },
-    ]),
   ],
   module: {
     loaders: [
