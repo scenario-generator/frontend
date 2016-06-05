@@ -4,6 +4,9 @@ let styles = {
     textDecoration: 'underline',
     cursor: 'pointer',
   },
+  backgroundStyles: {
+
+  },
 }
 
 export default styles

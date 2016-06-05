@@ -12,6 +12,7 @@ import Scenario from '../components/Scenario';
 function mapStateToProps(state) {
   return {
     scenario: state.scenario.scenario,
+    generator: state.scenario.generator,
     isFetching: state.scenario.isFetching,
   };
 }

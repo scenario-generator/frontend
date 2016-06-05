@@ -5,6 +5,7 @@ export function receiveScenario(json) {
   return {
     type: RECEIVE_SCENARIO,
     scenario: json.scenario,
+    generator: json.generator,
   };
 }
 

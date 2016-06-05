@@ -16,6 +16,7 @@ export default function scenario(state = initialState, action) {
   case RECEIVE_SCENARIO:
     return Object.assign({}, state, {
       isFetching: false,
+      generator: action.generator,
       scenario: action.scenario,
       receivedAt: Date.now(),
     });
