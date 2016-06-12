@@ -6,6 +6,7 @@ import Strings from '../../constants/strings'
 import Colors from '../../constants/styles/colors'
 import Backgrounds from '../../constants/images/backgrounds'
 import Styles from './styles'
+import FadedBackground from '../FadedBackground'
 
 export default Radium(class Scenario extends Component {
   componentDidMount() {
@@ -29,29 +30,6 @@ export default Radium(class Scenario extends Component {
       return `${type} generator for ${this.props.generator.subject.name}`
     }
     return Strings.rootPageTitle
-  }
-
-  backgroundStyles() {
-    let backgroundImageStyles;
-    if(this.props.generator) {
-      let imagePath = Backgrounds[this.props.generator.subject.name]
-      backgroundImageStyles = {
-        height: '100%',
-        backgroundColor: Colors.blue.primary,
-        backgroundSize: 'cover',
-        backgroundPosition: '0 0',
-        backgroundRepeat: 'no-repeat',
-        backgroundImage: imagePath,
-        backgroundImage: `-moz-linear-gradient(top, transparent 0%, ${Colors.blue.primary} 50%), ${imagePath}`,
-        backgroundImage: `-webkit-gradient(linear, left top, left bottom, color-stop(0%, transparent), color-stop(50%, ${Colors.blue.primary})), ${imagePath}`,
-        backgroundImage: `linear-gradient(to bottom, transparent, ${Colors.blue.primary}, ${Colors.blue.primary}), ${imagePath}`,
-        filter: `progid:DXImageTransform.Microsoft.gradient(startColorstr='transparent', endColorstr='${Colors.blue.primary}', GradientType=0)`
-      }
-    }
-    return [
-      Styles.backgroundStyles,
-      backgroundImageStyles
-    ]
   }
 
   renderColumn(column) {
@@ -88,12 +66,18 @@ export default Radium(class Scenario extends Component {
   }
 
   render() {
+    let subjectName, image;
+    if(this.props.generator) {
+      subjectName = this.props.generator.subject.name
+      image = Backgrounds[subjectName];
+    }
+
     return (
       <DocumentTitle title={this.documentTitle()}>
-        <div style={this.backgroundStyles()}>
+        <FadedBackground image={image}>
           {this.renderRerollButton()}
           {this.renderScenario()}
-        </div>
+        </FadedBackground>
       </DocumentTitle>
     );
   }

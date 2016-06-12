@@ -35,7 +35,7 @@ const Styles = {
   body: {
     position: 'relative',
     flexGrow: 1,
-    background: Colors.blue.light,
+    background: Colors.blue.primary,
   },
   childrenContainer: {
     position: 'absolute',
@@ -43,6 +43,7 @@ const Styles = {
     width: `${100 - Sizes.sidebar}%`,
     height: '100%',
     overflowY: 'scroll',
+    padding: 20,
   },
 }
 
