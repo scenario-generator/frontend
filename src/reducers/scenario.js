@@ -4,6 +4,11 @@ import 'whatwg-fetch'
 const initialState = {
   isFetching: false,
   scenario: {},
+  generator: {
+    subject: {
+      name: ''
+    }
+  },
   receivedAt: null,
 }
 

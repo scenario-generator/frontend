@@ -15,6 +15,16 @@ let styles = {
   grey: {
     dark: '#222',
   },
+  orange: {
+    light: '#eb9f4a',
+    primary: '#e89333',
+    dark: '#d07a18',
+  },
+  red: {
+    light: '#cb4747',
+    primary: '#c13737',
+    dark: '#992c2c',
+  },
   blue: {
     primary: '#476079',
     lighter: '#94A2B0',

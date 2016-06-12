@@ -7,6 +7,7 @@ import Colors from '../../constants/styles/colors'
 import Backgrounds from '../../constants/images/backgrounds'
 import Styles from './styles'
 import FadedBackground from '../FadedBackground'
+import Button from '../Button'
 
 export default Radium(class Scenario extends Component {
   componentDidMount() {
@@ -50,19 +51,48 @@ export default Radium(class Scenario extends Component {
     return columnArray
   }
 
+  renderTitle() {
+    return (
+      <div style={Styles.title}>
+        {this.props.generator.subject.name}
+      </div>
+    )
+  }
+
   renderScenario() {
     let columns = this.gatherColumns(this.props.scenario.columns)
     return _.map(columns, this.renderColumn)
   }
 
-  renderRerollButton() {
+  renderButtons() {
     return (
-      <div
-        onClick={() => this.fetchNewScenario()}
-        style={Styles.rerollButton}>
-        Reroll!
+      <div style={Styles.buttonBar}>
+        {this.renderRerollButton()}
+        {this.renderBuyButton()}
       </div>
     )
+  }
+
+  renderRerollButton() {
+    return (
+      <Button
+        onClick={() => this.fetchNewScenario()}
+        color={'orange'}>
+        Reroll Scenario
+      </Button>
+    )
+  }
+
+  renderBuyButton() {
+    if(this.props.generator.subject.ad_link) {
+      return (
+        <Button
+          href={this.props.generator.subject.ad_link}
+          color={'red'}>
+          Get This Game
+        </Button>
+      )
+    }
   }
 
   render() {
@@ -75,7 +105,8 @@ export default Radium(class Scenario extends Component {
     return (
       <DocumentTitle title={this.documentTitle()}>
         <FadedBackground image={image}>
-          {this.renderRerollButton()}
+          {this.renderTitle()}
+          {this.renderButtons()}
           {this.renderScenario()}
         </FadedBackground>
       </DocumentTitle>
