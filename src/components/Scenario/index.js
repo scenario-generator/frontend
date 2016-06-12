@@ -4,7 +4,7 @@ import _ from 'lodash'
 import DocumentTitle from 'react-document-title'
 import Strings from '../../constants/strings'
 import Colors from '../../constants/styles/colors'
-import ImagePath from '../../constants/styles/images'
+import Backgrounds from '../../constants/images/backgrounds'
 import Styles from './styles'
 
 export default Radium(class Scenario extends Component {
@@ -34,12 +34,11 @@ export default Radium(class Scenario extends Component {
   backgroundStyles() {
     let backgroundImageStyles;
     if(this.props.generator) {
-      let imagifiedName = `${this.props.generator.subject.name.replace(/\s+/g, '_').toLowerCase()}.jpg`
-      let imagePath = ImagePath(imagifiedName)
+      let imagePath = Backgrounds[this.props.generator.subject.name]
       backgroundImageStyles = {
         height: '100%',
         backgroundColor: Colors.blue.primary,
-        backgroundSize: 'contain',
+        backgroundSize: 'cover',
         backgroundPosition: '0 0',
         backgroundRepeat: 'no-repeat',
         backgroundImage: imagePath,
