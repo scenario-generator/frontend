@@ -2,7 +2,7 @@ import React from 'react';
 import Radium from 'radium';
 import _ from 'lodash';
 import { Link } from 'react-router';
-import Styles from './Styles'
+import Styles from './styles'
 
 const Button = Radium(React.createClass ({
 
