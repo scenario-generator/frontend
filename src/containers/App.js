@@ -43,7 +43,6 @@ const Styles = {
     width: `${100 - Sizes.sidebar}%`,
     height: '100%',
     overflowY: 'scroll',
-    padding: 20,
   },
 }
 

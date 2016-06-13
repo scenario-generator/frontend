@@ -35,9 +35,17 @@ export default Radium(class Scenario extends Component {
 
   renderColumn(column) {
     return (
-      <div key={`${column.id}-${column.name}`}>
-        <span>{column.name}: </span>
-        {_.map(column.options, (option) => <span key={`${option.id}-${option.text}`}>{option.text}</span>)}
+      <div
+        style={Styles.column}
+        key={`${column.id}-${column.name}`}>
+        <div style={Styles.columnName}>{column.name}</div>
+        {_.map(column.options, (option) => (
+          <div
+            style={Styles.option}
+            key={`${option.id}-${option.text}`}>
+            {option.text}
+          </div>
+        ))}
       </div>
     )
   }
@@ -61,7 +69,11 @@ export default Radium(class Scenario extends Component {
 
   renderScenario() {
     let columns = this.gatherColumns(this.props.scenario.columns)
-    return _.map(columns, this.renderColumn)
+    return (
+      <div style={Styles.scenario}>
+        {_.map(columns, this.renderColumn)}
+      </div>
+    )
   }
 
   renderButtons() {

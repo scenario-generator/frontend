@@ -15,7 +15,6 @@ let styles = {
     position: 'relative',
     height: '100%',
     display: 'flex',
-    margin: -20,
   },
   children: {
     width: '100%',

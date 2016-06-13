@@ -14,6 +14,7 @@ let toRGB = function(hex, opacity = 1) {
 let styles = {
   grey: {
     dark: '#222',
+    light: '#ccc'
   },
   orange: {
     light: '#eb9f4a',
