@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Router, Route, browserHistory } from 'react-router'
+import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import DocumentTitle from 'react-document-title'
 import Strings from '../constants/strings'
 import App from './App';
@@ -15,6 +15,7 @@ module.exports = class Routes extends Component {
       <DocumentTitle title={Strings.rootPageTitle}>
         <Router history={browserHistory} >
           <Route path="/" component={App}>
+            <IndexRoute component={ScenarioContainer}/>
             <Route path="generators/:id" component={ScenarioContainer} />
             <Route path="*" component={NotFound} />
           </Route>

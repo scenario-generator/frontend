@@ -22,7 +22,7 @@ export default Radium(class Scenario extends Component {
 
   fetchNewScenario(id = false) {
     id = id ? id : this.props.params.id
-    this.props.actions.fetchScenario(id)
+    this.props.actions.fetchScenario(id || 'random')
   }
 
   documentTitle() {
