@@ -46,10 +46,7 @@ export default Radium(class Scenario extends Component {
         <div
           style={Styles.columnName}>
           {column.name}
-          <div
-            onClick={this.rerollColumnFunction(this.props.generator.id, column.id)}>
-            <img src={Icons.refresh} style={Styles.rerollIcon} />
-          </div>
+          <img src={Icons.refresh} style={Styles.rerollIcon} onClick={this.rerollColumnFunction(this.props.generator.id, column.id)}/>
         </div>
         {_.map(column.options, (option) => (
           <div
