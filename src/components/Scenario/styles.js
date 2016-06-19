@@ -29,6 +29,12 @@ let styles = {
     background: Colors.toRGB(Colors.grey.dark, 0.7),
     color: Colors.blue.lighter,
     padding: 5,
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  rerollIcon: {
+    width: 20,
   },
   option: {
     background: Colors.toRGB(Colors.grey.dark, 0.5),

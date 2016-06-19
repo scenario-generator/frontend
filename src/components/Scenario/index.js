@@ -5,6 +5,7 @@ import DocumentTitle from 'react-document-title'
 import Strings from '../../constants/strings'
 import Colors from '../../constants/styles/colors'
 import Backgrounds from '../../constants/images/backgrounds'
+import Icons from '../../constants/images/icons'
 import Styles from './styles'
 import FadedBackground from '../FadedBackground'
 import Button from '../Button'
@@ -25,6 +26,10 @@ export default Radium(class Scenario extends Component {
     this.props.actions.fetchScenario(id || 'random')
   }
 
+  rerollColumnFunction(generatorId, columnId) {
+    return () => this.props.actions.fetchColumn(generatorId, columnId)
+  }
+
   documentTitle() {
     if(this.props.generator) {
       let type = this.props.generator.name || 'Scenario'
@@ -38,7 +43,14 @@ export default Radium(class Scenario extends Component {
       <div
         style={Styles.column}
         key={`${column.id}-${column.name}`}>
-        <div style={Styles.columnName}>{column.name}</div>
+        <div
+          style={Styles.columnName}>
+          {column.name}
+          <div
+            onClick={this.rerollColumnFunction(this.props.generator.id, column.id)}>
+            <img src={Icons.refresh} style={Styles.rerollIcon} />
+          </div>
+        </div>
         {_.map(column.options, (option) => (
           <div
             style={Styles.option}
@@ -71,7 +83,7 @@ export default Radium(class Scenario extends Component {
     let columns = this.gatherColumns(this.props.scenario.columns)
     return (
       <div style={Styles.scenario}>
-        {_.map(columns, this.renderColumn)}
+        {_.map(columns, this.renderColumn.bind(this))}
       </div>
     )
   }
