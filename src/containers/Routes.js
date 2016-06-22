@@ -17,6 +17,7 @@ module.exports = class Routes extends Component {
           <Route path="/" component={App}>
             <IndexRoute component={ScenarioContainer}/>
             <Route path="generators/:id" component={ScenarioContainer} />
+            <Route path="generators/:id/scenario/:uuid" component={ScenarioContainer} />
             <Route path="*" component={NotFound} />
           </Route>
         </Router>

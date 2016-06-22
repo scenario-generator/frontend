@@ -1,1 +1,1 @@
-export default 'http://scenario-generator-api.herokuapp.com/';
+export default 'http://localhost:4000/';

@@ -23,6 +23,8 @@ export default {
     cursor: 'pointer',
     display: 'inline-block',
     textDecoration: 'none',
+    width: 130,
+    textAlign: 'center',
   },
   red: buttonColor(Colors.red.light, Colors.red.primary, Colors.red.dark),
   blue: buttonColor(Colors.blue.light, Colors.blue.primary, Colors.blue.dark),

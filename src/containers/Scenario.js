@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as ScenarioActions from '../actions/ScenarioActions';
-import Scenario from '../components/Scenario';
+import ScenarioPage from '../components/ScenarioPage';
 
 /**
  * Keep in mind that 'state' isn't the state of local object, but your single
@@ -42,4 +42,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Scenario);
+)(ScenarioPage);

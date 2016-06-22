@@ -9,7 +9,7 @@ const Button = Radium(React.createClass ({
   getDefaultProps: function() {
     return {
       color: 'red',
-      children: 'REPLACE THIS TEXT',
+      children: '',
       onClick: (() => alert('Assign an onClick to this button')),
     }
   },

@@ -5,6 +5,7 @@ import {
   REQUEST_COLUMN,
 } from '../constants/ActionTypes';
 import ScenarioPath from '../constants/api/ScenarioPath.js';
+import ScenarioLoadPath from '../constants/api/ScenarioLoadPath.js';
 import ColumnPath from '../constants/api/ColumnPath.js';
 
 export function receiveScenario(json) {
@@ -31,6 +32,18 @@ export function fetchScenario(id) {
       )
   }
 }
+
+export function fetchSavedScenario(id, uuid) {
+  return function (dispatch) {
+    dispatch(requestScenario())
+    return fetch(ScenarioLoadPath(id, uuid))
+      .then(response => response.json())
+      .then(json =>
+        dispatch(receiveScenario(json))
+      )
+  }
+}
+
 export function receiveColumn(json) {
   return {
     type: RECEIVE_COLUMN,
