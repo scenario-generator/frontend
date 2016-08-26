@@ -1,1 +1,1 @@
-export default 'https://scenario-generator-api.herokuapp.com/';
+export default 'https://api.scenariogenerator.net/';
