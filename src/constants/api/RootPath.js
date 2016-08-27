@@ -1,1 +1,3 @@
-export default 'https://api.scenariogenerator.net/';
+import ENV from '../../../env'
+
+export default ENV.apiUrl;

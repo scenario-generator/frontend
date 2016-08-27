@@ -5,3 +5,4 @@ lib
 coverage
 dist/bundle.js*
 config/deploy.rb
+env.js
