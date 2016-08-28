@@ -1,12 +1,19 @@
+import { browserHistory } from 'react-router'
+import axios from 'axios';
+
 import {
   RECEIVE_SCENARIO,
   REQUEST_SCENARIO,
+  SAVE_SCENARIO,
   RECEIVE_COLUMN,
   REQUEST_COLUMN,
 } from '../constants/ActionTypes';
-import ScenarioPath from '../constants/api/ScenarioPath.js';
-import ScenarioLoadPath from '../constants/api/ScenarioLoadPath.js';
-import ColumnPath from '../constants/api/ColumnPath.js';
+
+import UpdateScenarioPath from '../constants/api/scenarios/UpdatePath.js';
+import SaveScenarioPath   from '../constants/api/scenarios/CreatePath.js';
+import LoadScenarioPath   from '../constants/api/scenarios/ShowPath.js';
+import RollScenarioPath   from '../constants/api/scenarios/NewPath.js';
+import RerollColumnPath   from '../constants/api/columns/scenarios/NewPath.js';
 
 export function receiveScenario(json) {
   return {
@@ -22,25 +29,59 @@ export function requestScenario() {
   };
 }
 
-export function fetchScenario(id) {
+export function saveScenarioEvent() {
+  return {
+    type: SAVE_SCENARIO,
+  };
+}
+
+export function newScenario(actionsHash) {
   return function (dispatch) {
     dispatch(requestScenario())
-    return fetch(ScenarioPath(id))
-      .then(response => response.json())
+    return axios.get(RollScenarioPath(actionsHash.id))
+      .then(function(json) {
+        dispatch(receiveScenario(json.data))
+      })
+  }
+}
+
+export function loadScenario(actionsHash) {
+  return function (dispatch) {
+    dispatch(requestScenario())
+    return axios.get(LoadScenarioPath(actionsHash.id, actionsHash.uuid))
       .then(json =>
-        dispatch(receiveScenario(json))
+        dispatch(receiveScenario(json.data))
       )
   }
 }
 
-export function fetchSavedScenario(id, uuid) {
+export function saveScenario(actionsHash) {
   return function (dispatch) {
-    dispatch(requestScenario())
-    return fetch(ScenarioLoadPath(id, uuid))
-      .then(response => response.json())
-      .then(json =>
-        dispatch(receiveScenario(json))
-      )
+    dispatch(saveScenarioEvent())
+    return (
+      axios.post(SaveScenarioPath(actionsHash.id), {
+        scenario: actionsHash.scenario
+      })
+      .then(function(json) {
+        browserHistory.push(`/generators/${actionsHash.id}/scenario/${json.data.uuid}`)
+        dispatch(receiveScenario(json.data))
+      })
+    )
+  }
+}
+
+export function updateScenario(actionsHash) {
+  return function (dispatch) {
+    dispatch(saveScenarioEvent())
+    return (
+      axios.patch(UpdateScenarioPath(actionsHash.id, actionsHash.uuid), {
+        scenario: actionsHash.scenario
+      })
+      .then(function(json) {
+        browserHistory.push(`/generators/${actionsHash.id}/scenario/${json.data.uuid}`)
+        dispatch(receiveScenario(json.data))
+      })
+    )
   }
 }
 
@@ -61,10 +102,9 @@ export function requestColumn(fetchingColumnId) {
 export function fetchColumn(generatorId, columnId) {
   return function (dispatch) {
     dispatch(requestColumn(columnId))
-    return fetch(ColumnPath(generatorId, columnId))
-      .then(response => response.json())
+    return axios.get(RerollColumnPath(generatorId, columnId))
       .then(json =>
-        dispatch(receiveColumn(json))
+        dispatch(receiveColumn(json.data))
       )
   }
 }

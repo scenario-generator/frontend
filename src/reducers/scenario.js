@@ -10,9 +10,7 @@ const initialState = {
   isFetching: false,
   scenario: {},
   generator: {
-    subject: {
-      name: ''
-    }
+    name: '',
   },
   receivedAt: null,
 }

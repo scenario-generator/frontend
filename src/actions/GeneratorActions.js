@@ -1,5 +1,6 @@
 import { REQUEST_GENERATORS, RECEIVE_GENERATORS } from '../constants/ActionTypes';
-import GeneratorIndexPath from '../constants/api/GeneratorIndexPath.js';
+import GeneratorsIndexPath from '../constants/api/generators/IndexPath.js';
+import axios from 'axios';
 
 export function receiveGenerators(json) {
   return {
@@ -17,10 +18,7 @@ export function requestGenerators() {
 export function fetchGenerators() {
   return function (dispatch) {
     dispatch(requestGenerators())
-    return fetch(GeneratorIndexPath)
-      .then(response => response.json())
-      .then(json =>
-        dispatch(receiveGenerators(json))
-      )
+    return axios.get(GeneratorsIndexPath)
+      .then(json => dispatch(receiveGenerators(json.data)))
   }
 }
