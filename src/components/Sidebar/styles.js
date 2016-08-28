@@ -25,6 +25,7 @@ let styles = {
   link: {
     color: Colors.blue.lighter,
     textDecoration: 'none',
+    cursor: 'pointer',
   }
 }
 
