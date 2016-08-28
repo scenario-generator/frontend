@@ -21,10 +21,8 @@ let styles = {
     height: 20,
     width: 20,
     cursor: 'pointer',
-    margin: -5,
-    padding: 5,
-    paddingBottom: 0,
-    marginLeft: 5,
+    margin: '-5px -5px -5px -px',
+    padding: '5px 5px 0px',
   },
   option: {
     background: Colors.toRGB(Colors.grey.dark, 0.5),
