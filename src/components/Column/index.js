@@ -56,7 +56,7 @@ export default Radium(class ScenarioPage extends Component {
     return (
       <div
         style={Styles.option}
-        key={`option-${id}-${text}`}>
+        key={`option-${id}-${text}-${Math.floor((Math.random() * 100000))}`}>
         {text}
       </div>
     )
