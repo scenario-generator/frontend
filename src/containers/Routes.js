@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Router, Route, browserHistory, IndexRoute } from 'react-router'
+import { Router, Route, browserHistory, IndexRoute, Redirect } from 'react-router'
 import DocumentTitle from 'react-document-title'
 import Strings from '../constants/strings'
 import {StyleRoot} from 'radium';
@@ -20,6 +20,8 @@ module.exports = class Routes extends Component {
               <IndexRoute component={ScenarioContainer}/>
               <Route path="generators/:id" component={ScenarioContainer} />
               <Route path="generators/:id/scenario/:uuid" component={ScenarioContainer} />
+              <Redirect from="game/:id" to="generators/:id" />
+              <Redirect from="game/:id/scenario/:uuid" to="generators/:id/scenario/:uuid" />
               <Route path="*" component={NotFound} />
             </Route>
           </Router>
