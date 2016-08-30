@@ -11,6 +11,8 @@ import SidebarContainer from './Sidebar'
 
 let App = class App extends Component {
   render() {
+    document.body.style.backgroundColor = Colors.blue.primary;
+
     const { generators, actions, children } = this.props
     return (
       <div style={Styles.container}>
@@ -41,7 +43,6 @@ const Styles = {
   body: {
     position: 'relative',
     top: Sizes.headerHeight - 1,
-    marginBottom: Sizes.tabBarHeight,
     flexGrow: 1,
     background: Colors.blue.primary,
   },
@@ -49,6 +50,7 @@ const Styles = {
     position: 'absolute',
     left: `${Sizes.sidebar}%`,
     width: `${100 - Sizes.sidebar}%`,
+    paddingBottom: Sizes.tabBarHeight,
     height: '100%',
     overflowY: 'scroll',
     '@media (max-device-width: 992px)': {
