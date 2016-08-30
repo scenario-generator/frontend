@@ -4,7 +4,8 @@ let styles = {
   scenario: {
     display: 'flex',
     justifyContent: 'center',
-    flexFlow: 'row wrap'
+    flexFlow: 'row wrap',
+    marginTop: 15,
   },
 }
 

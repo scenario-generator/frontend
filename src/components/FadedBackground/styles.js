@@ -21,6 +21,9 @@ let styles = {
     height: '100%',
     zIndex: 1,
     padding: 20,
+    '@media (max-device-width: 992px)': {
+      padding: 0,
+    },
   }
 }
 

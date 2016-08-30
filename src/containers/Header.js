@@ -1,9 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as GeneratorActions from '../actions/GeneratorActions';
-import * as SidebarActions from '../actions/SidebarActions';
-import Sidebar from '../components/Sidebar';
+import * as ScenarioActions from '../actions/ScenarioActions';
+import Header from '../components/Header';
 
 /**
  * Keep in mind that 'state' isn't the state of local object, but your single
@@ -12,7 +11,7 @@ import Sidebar from '../components/Sidebar';
  */
 function mapStateToProps(state) {
   return {
-    generators: state.generators.generators,
+    generator: state.scenario.generator,
     isFetching: state.generators.isFetching || state.scenario.isFetching,
     isOpen: state.sidebar.isOpen,
   };
@@ -28,8 +27,7 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    generatorActions: bindActionCreators(GeneratorActions, dispatch),
-    actions: bindActionCreators(SidebarActions, dispatch),
+    actions: bindActionCreators(ScenarioActions, dispatch)
   };
 }
 
@@ -44,4 +42,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Sidebar);
+)(Header);

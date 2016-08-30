@@ -37,7 +37,7 @@ const Button = Radium(React.createClass ({
       )
     }
     return (
-      <span
+      <button
         onClick={this.props.onClick}
         {...this.props}
         style={this.buttonStyle()}

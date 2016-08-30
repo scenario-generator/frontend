@@ -10,3 +10,5 @@ export const REQUEST_SCENARIO   = 'REQUEST_SCENARIO';
 export const SAVE_SCENARIO      = 'SAVE_SCENARIO';
 export const RECEIVE_COLUMN     = 'RECEIVE_COLUMN';
 export const REQUEST_COLUMN     = 'REQUEST_COLUMN';
+export const OPEN_SIDEBAR       = 'OPEN_SIDEBAR';
+export const CLOSE_SIDEBAR      = 'CLOSE_SIDEBAR';

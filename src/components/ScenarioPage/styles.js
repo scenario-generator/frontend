@@ -10,12 +10,18 @@ let styles = {
     fontSize: 50,
     marginTop: 20,
     color: Colors.green.lighter,
+    '@media (max-device-width: 992px)': {
+      display: 'none',
+    },
   },
   buttonBar: {
     marginTop: 30,
-    marginBottom: 30,
     display: 'flex',
     justifyContent: 'space-between',
+    '@media (max-device-width: 992px)': {
+      paddingLeft: 20,
+      paddingRight: 20,
+    },
   },
 }
 

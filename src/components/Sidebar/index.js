@@ -7,7 +7,7 @@ import Styles from './styles'
 
 let Sidebar = class Sidebar extends Component {
   componentDidMount() {
-    this.props.actions.fetchGenerators()
+    this.props.generatorActions.fetchGenerators()
   }
 
   randomGeneratorID() {
@@ -16,6 +16,17 @@ let Sidebar = class Sidebar extends Component {
 
   navigateToRandomGenerator() {
     browserHistory.push(`/generators/${this.randomGeneratorID()}`)
+    this.props.actions.closeSidebar()
+  }
+
+  containerStyles() {
+    let styles = [Styles.container]
+    if(this.props.isOpen) {
+      styles = styles.concat(Styles.open)
+    } else {
+      styles = styles.concat(Styles.closed)
+    }
+    return styles
   }
 
   renderRandomGenerator() {
@@ -39,6 +50,7 @@ let Sidebar = class Sidebar extends Component {
         key={generator.id}>
         <Link
           to={`/generators/${generator.slug}`}
+          onClick={this.props.actions.closeSidebar}
           style={Styles.link}>
           {generator.name}
         </Link>
@@ -48,10 +60,10 @@ let Sidebar = class Sidebar extends Component {
 
   render() {
     return (
-      <div style={Styles.container}>
+      <div style={this.containerStyles()}>
         <div style={Styles.content}>
           {this.renderRandomGenerator()}
-          {this.props.generators.map(this.renderGenerator)}
+          {this.props.generators.map(this.renderGenerator.bind(this))}
         </div>
       </div>
     );
