@@ -21,7 +21,6 @@ let styles = {
   },
   tab: {
     color: Colors.blue.lighter,
-    transition: '0.25s',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
