@@ -13,6 +13,9 @@ let styles = {
     left: 0,
     zIndex: 10,
     boxSizing: 'border-box',
+    '@media (max-device-width: 992px)': {
+      justifyContent: 'space-around',
+    },
   },
   title: {
     color: Colors.blue.lighter,
