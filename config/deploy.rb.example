@@ -1,0 +1,32 @@
+require 'mina/git'
+require 'mina/nginx'
+
+set :domain, URL_HERE
+set :deploy_to, PATH_HERE
+set :repository, GIT_DIR_HERE
+set :branch, 'master'
+set :app_path, "#{deploy_to}/current"
+set :user, USER_HERE
+
+set :forward_agent, true
+
+set :shared_paths, ['node_modules', 'env.js']
+
+task setup: :environment do
+  queue! %(mkdir -p "#{deploy_to}/#{shared_path}/node_modules")
+  queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/node_modules")
+  queue! %[touch "#{deploy_to}/#{shared_path}/env.js"]
+
+  queue  %(echo "-----> Be sure to put #{shared_paths} in place.")
+end
+
+desc 'Deploys the current version to the server.'
+task deploy: :environment do
+  deploy do
+    invoke :'git:clone'
+    invoke :'deploy:link_shared_paths'
+    queue! 'npm install'
+    queue  'npm run build'
+    invoke :'deploy:cleanup'
+  end
+end
