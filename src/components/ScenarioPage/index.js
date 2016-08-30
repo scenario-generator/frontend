@@ -1,94 +1,52 @@
+// Libs
+import _                    from 'lodash'
+import Radium               from 'radium'
+import DocumentTitle        from 'react-document-title'
+import { browserHistory }   from 'react-router'
 import React, { Component } from 'react'
-import Radium from 'radium'
-import _ from 'lodash'
-import { browserHistory } from 'react-router'
-import DocumentTitle from 'react-document-title'
-import Strings from '../../constants/strings'
-import Backgrounds from '../../constants/images/backgrounds'
-import Styles from './styles'
+
+// Constants
+import Styles          from './styles'
+import Strings         from '../../constants/strings'
+import Backgrounds     from '../../constants/images/backgrounds'
+import StyleConstants  from '../../constants/styles/css'
+
+// Components
+import Button          from '../Button'
+import Scenario        from '../Scenario'
 import FadedBackground from '../FadedBackground'
-import Button from '../Button'
-import Scenario from '../Scenario'
+
+// Utilities
+import fetchScenario         from '../../utils/fetchScenario'
+import rerollScenario        from '../../utils/rerollScenario'
+import getScenarioActionHash from '../../utils/scenarioActionHash'
 
 export default Radium(class ScenarioPage extends Component {
   // Lifecycle
 
   componentDidMount() {
-    this.getFetchScenarioFunction(this.props.params)()
+    fetchScenario(this.props, false, this.props.params.uuid)
   }
 
   componentWillReceiveProps(newProps) {
     if(this.props.params.id !== newProps.params.id ||
        this.props.params.uuid !== newProps.params.uuid) {
-      this.getFetchScenarioFunction(newProps.params)(newProps.params.id, newProps.params.uuid)
+      let id = newProps.params.id || 'random';
+      fetchScenario(this.props, id, newProps.params.uuid)
     }
-  }
-
-  // Getters
-
-  getGeneratorId() {
-    return this.props.generator.slug || this.props.params.id || 'random'
-  }
-
-  getUUID() {
-    return this.props.params.uuid
-  }
-
-  getScenario() {
-    return this.props.scenario;
-  }
-
-  getScenarioActionsHash(id = false, uuid = false, scenario = false) {
-    return {
-      id: id || this.getGeneratorId(),
-      uuid: uuid || this.getUUID(),
-      scenario: scenario || this.getScenario()
-    }
-  }
-
-  // Fetchers
-
-  getFetchScenarioFunction(params) {
-    if(params.uuid) { return this.fetchExistingScenario.bind(this) }
-    return this.fetchNewScenario.bind(this)
-  }
-
-  fetchNewScenario(id = false) {
-    this.props.actions.newScenario(this.getScenarioActionsHash(id))
-  }
-
-  fetchExistingScenario(id = false, uuid = false) {
-    this.props.actions.loadScenario(this.getScenarioActionsHash(id, uuid))
   }
 
   // Callbacks
 
-  onReroll() {
-    if(this.props.params.uuid) {
-      browserHistory.push(`/generators/${this.props.params.slug}`)
-    } else {
-      this.fetchNewScenario()
-    }
-  }
-
-  getOnSaveFunction() {
-    if(this.props.params.uuid) { return () => this.onSaveExisting() }
-    return () => this.onSaveNew()
-  }
-
-  onSaveNew(id = false, scenario = false) {
-    this.props.actions.saveScenario(this.getScenarioActionsHash(id, false, scenario))
-  }
-
-  onSaveExisting(id = false, uuid = false, scenario = false) {
-    this.props.actions.updateScenario(this.getScenarioActionsHash(id, uuid, scenario))
+  onSave() {
+    this.props.actions.saveScenario(getScenarioActionHash(this.props))
   }
 
   // Renderers
 
   documentTitle() {
     if(this.props.generator) {
-      let type = this.props.generator.name || 'Scenario'
+      let type = this.props.generator.kind || 'Scenario'
       return `${type} generator for ${this.props.generator.name}`
     }
     return Strings.rootPageTitle
@@ -104,7 +62,7 @@ export default Radium(class ScenarioPage extends Component {
 
   renderButtons() {
     return (
-      <div style={Styles.buttonBar}>
+      <div style={[Styles.buttonBar, StyleConstants.desktop]}>
         {this.renderSaveButton()}
         {this.renderRerollButton()}
         {this.renderBuyButton()}
@@ -115,9 +73,9 @@ export default Radium(class ScenarioPage extends Component {
   renderRerollButton() {
     return (
       <Button
-        onClick={() => this.onReroll()}
+        onClick={() => rerollScenario(this.props)}
         color={'orange'}>
-        Reroll Scenario
+        Reroll
       </Button>
     )
   }
@@ -127,8 +85,8 @@ export default Radium(class ScenarioPage extends Component {
     return (
       <Button
         color={'purple'}
-        onClick={this.getOnSaveFunction()}>
-        Save Scenario
+        onClick={this.onSave.bind(this)}>
+        Save
       </Button>
     )
   }
@@ -139,7 +97,7 @@ export default Radium(class ScenarioPage extends Component {
         <Button
           href={this.props.generator.ad_link}
           color={'red'}>
-          Get This Game
+          Get Game
         </Button>
       )
     }

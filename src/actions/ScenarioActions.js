@@ -56,6 +56,8 @@ export function loadScenario(actionsHash) {
 }
 
 export function saveScenario(actionsHash) {
+  if(actionsHash.uuid) { return updateScenario(actionsHash) }
+
   return function (dispatch) {
     dispatch(saveScenarioEvent())
     return (
