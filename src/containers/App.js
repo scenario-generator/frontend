@@ -45,12 +45,12 @@ const Styles = {
     top: Sizes.headerHeight - 1,
     flexGrow: 1,
     background: Colors.blue.primary,
+    marginBottom: Sizes.tabBarHeight,
   },
   childrenContainer: {
     position: 'absolute',
     left: `${Sizes.sidebar}%`,
     width: `${100 - Sizes.sidebar}%`,
-    paddingBottom: Sizes.tabBarHeight,
     height: '100%',
     overflowY: 'scroll',
     '@media (max-device-width: 992px)': {
