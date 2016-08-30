@@ -41,6 +41,7 @@ const Styles = {
   body: {
     position: 'relative',
     top: Sizes.headerHeight - 1,
+    marginBottom: Sizes.tabBarHeight,
     flexGrow: 1,
     background: Colors.blue.primary,
   },

@@ -5,6 +5,7 @@ let styles = {
   container: {
     display: 'flex',
     width: '100%',
+    height: Sizes.tabBarHeight,
     background: Colors.grey.dark,
     alignItems: 'center',
     position: 'fixed',
