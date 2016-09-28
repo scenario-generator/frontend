@@ -15,6 +15,7 @@ import StyleConstants  from '../../constants/styles/css'
 import Button          from '../Button'
 import Scenario        from '../Scenario'
 import FadedBackground from '../FadedBackground'
+import Ad              from '../Ad'
 
 // Utilities
 import fetchScenario         from '../../utils/fetchScenario'
@@ -116,6 +117,7 @@ export default Radium(class ScenarioPage extends Component {
         <FadedBackground image={image}>
           {this.renderTitle()}
           {this.renderButtons()}
+          <Ad size='halfBanner' />
           <Scenario
             {...this.props}
             scenario={this.props.scenario}

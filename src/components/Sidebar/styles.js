@@ -10,7 +10,7 @@ let styles = {
     height: '100%',
     overflowY: 'scroll',
     zIndex: 9,
-    transition: '0.5s',
+    transition: '0.25s',
     '@media (max-device-width: 992px)': {
       width: `${Sizes.sidebarMobile}%`,
     },
