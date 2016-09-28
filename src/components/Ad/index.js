@@ -30,7 +30,7 @@ export default Radium(class Ad extends Component {
   renderDFP(style, size) {
     return (
       <div style={style}>
-        <Dfp adUnitPath={this.adUnitPath()} adSize={size} />
+        <Dfp adUnitPath={this.adUnitPath()} adSize={size} adCollapse={false} />
       </div>
     )
   }
