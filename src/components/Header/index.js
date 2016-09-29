@@ -3,6 +3,7 @@ import Radium from 'radium';
 import { Link } from 'react-router';
 import Styles from './styles'
 import StyleConstants from '../../constants/styles/css'
+import Icons from '../../constants/images/icons'
 import rerollScenario from '../../utils/rerollScenario'
 import Button from '../Button'
 import Strings from '../../constants/strings'
@@ -26,13 +27,15 @@ export default Radium(class Header extends Component {
   }
 
   renderRerollButton() {
-    return (
-      <span
-        style={[Styles.mobileButton, StyleConstants.mobile]}
-        onClick={() => rerollScenario(this.props)}>
-        Reroll
-      </span>
-    )
+    if(!this.props.isFetching) {
+      return (
+        <span
+          style={[Styles.mobileButton, StyleConstants.mobile]}
+          onClick={() => rerollScenario(this.props)}>
+          Reroll
+        </span>
+      )
+    }
   }
 
   renderTitle() {
@@ -72,12 +75,26 @@ export default Radium(class Header extends Component {
     }
   }
 
+  renderSpinner() {
+    if(this.props.isFetching) {
+      return (
+        <span>
+          <img
+            src={Icons.spinner}
+            style={Styles.icon}
+          />
+        </span>
+      )
+    }
+  }
+
   render() {
     if(this.props.isOpen) {
       return (
         <div style={Styles.container}>
           {this.renderTitle()}
           {this.renderMobileTitle()}
+          {this.renderSpinner()}
         </div>
       )
     } else {
@@ -87,6 +104,7 @@ export default Radium(class Header extends Component {
           {this.renderTitle()}
           {this.renderMobileTitle()}
           {this.renderRerollButton()}
+          {this.renderSpinner()}
         </div>
       )
     }

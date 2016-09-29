@@ -23,7 +23,7 @@ const requestScenario = (state, action) =>
 const requestColumn = (state, action) =>
   Object.assign({}, state, {
     isFetching: true,
-    fetchingColumnId: action.replacementColumn,
+    fetchingColumnId: action.fetchingColumnId,
   });
 
 const receiveScenario = (state, action) =>

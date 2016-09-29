@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Radium from 'radium'
 import _ from 'lodash'
 import ReactTooltip from 'react-tooltip'
+import StyleConstants from '../../constants/styles/css'
 import Icons from '../../constants/images/icons'
 import Styles from './styles'
 
@@ -21,6 +22,10 @@ export default Radium(class ScenarioPage extends Component {
   }
 
   renderReroll(column) {
+    if(this.props.fetching) {
+      return this.renderSpinner()
+    }
+
     return (
       <span>
         <img
@@ -62,7 +67,19 @@ export default Radium(class ScenarioPage extends Component {
     )
   }
 
+  renderSpinner() {
+    return (
+      <span>
+        <img
+          src={Icons.spinner}
+          style={Styles.icon}
+        />
+      </span>
+    )
+  }
+
   renderOptions(column) {
+
     if(column.options.length < 1) {
       return this.renderOption('None', column.id)
     }

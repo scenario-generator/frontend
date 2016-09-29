@@ -13,7 +13,8 @@ function mapStateToProps(state) {
   return {
     scenario: state.scenario.scenario,
     generator: state.scenario.generator,
-    isFetching: state.generators.isFetching || state.scenario.isFetching,
+    isFetching: state.scenario.isFetching,
+    fetchingColumnId: state.scenario.fetchingColumnId,
   };
 }
 

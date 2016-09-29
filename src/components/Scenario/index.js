@@ -20,6 +20,7 @@ export default Radium(class Scenario extends Component {
         {...this.props}
         key={`column-${column.id || Math.random()}-${column.name}`}
         column={column}
+        fetching={column.id == this.props.fetchingColumnId}
       />
     )
   }

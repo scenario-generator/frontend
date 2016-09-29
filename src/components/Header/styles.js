@@ -35,7 +35,18 @@ let styles = {
   mobileButton: {
     color: Colors.blue.lighter,
     cursor: 'pointer',
-  }
+  },
+  icon: {
+    height: 40,
+    position: 'absolute',
+    right: 10,
+    top: 5,
+    '@media (max-device-width: 992px)': {
+      position: 'initial',
+      height: 30,
+      width: 42,
+    },
+  },
 }
 
 export default styles

@@ -9,6 +9,7 @@ let icons = {
     white: '/images/icons/list.svg',
     blue: '/images/icons/list-blue.svg',
   },
+  spinner: '/images/icons/spinner.svg',
 }
 
 export default icons
