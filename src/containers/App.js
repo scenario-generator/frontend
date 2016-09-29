@@ -42,10 +42,13 @@ const Styles = {
   },
   body: {
     position: 'relative',
-    top: Sizes.headerHeight - 1,
+    top: Sizes.headerCompensation,
     flexGrow: 1,
     background: Colors.blue.primary,
-    marginBottom: Sizes.tabBarHeight,
+    marginBottom: Sizes.headerCompensation,
+    '@media (max-device-width: 992px)': {
+      marginBottom: Sizes.tabBarHeight + Sizes.headerCompensation,
+    },
   },
   childrenContainer: {
     position: 'absolute',
