@@ -117,7 +117,10 @@ export default Radium(class ScenarioPage extends Component {
         <FadedBackground image={image}>
           {this.renderTitle()}
           {this.renderButtons()}
-          <Ad size='halfBanner' />
+          <Ad
+            size='halfBanner'
+            key={this.props.generator.name}
+          />
           <Scenario
             {...this.props}
             scenario={this.props.scenario}
