@@ -2,6 +2,7 @@ import {
   RECEIVE_SCENARIO,
   REQUEST_SCENARIO,
   RECEIVE_COLUMN,
+  SAVE_SCENARIO,
   REQUEST_COLUMN,
 } from '../constants/ActionTypes';
 import 'whatwg-fetch'
@@ -16,6 +17,11 @@ const initialState = {
 }
 
 const requestScenario = (state, action) =>
+  Object.assign({}, state, {
+    isFetching: true,
+  });
+
+const saveScenario = (state, action) =>
   Object.assign({}, state, {
     isFetching: true,
   });
@@ -72,6 +78,8 @@ export default function scenario(state = initialState, action) {
     return requestScenario(state, action)
   case RECEIVE_SCENARIO:
     return receiveScenario(state, action)
+  case SAVE_SCENARIO:
+    return saveScenario(state, action)
   case REQUEST_COLUMN:
     return requestColumn(state, action)
   case RECEIVE_COLUMN:

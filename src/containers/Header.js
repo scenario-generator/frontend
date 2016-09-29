@@ -11,6 +11,7 @@ import Header from '../components/Header';
  */
 function mapStateToProps(state) {
   return {
+    scenario: state.scenario.scenario,
     generator: state.scenario.generator,
     isFetching: state.generators.isFetching || state.scenario.isFetching,
     isOpen: state.sidebar.isOpen,

@@ -5,6 +5,7 @@ import Styles from './styles'
 import StyleConstants from '../../constants/styles/css'
 import Icons from '../../constants/images/icons'
 import rerollScenario from '../../utils/rerollScenario'
+import getScenarioActionHash from '../../utils/scenarioActionHash'
 import Button from '../Button'
 import Strings from '../../constants/strings'
 
@@ -16,11 +17,20 @@ export default Radium(class Header extends Component {
     return Strings.rootPageTitle
   }
 
+  onSave() {
+    this.props.actions.saveScenario(getScenarioActionHash(this.props))
+  }
+
   renderSaveButton() {
+    let extraStyles;
+    if(this.props.isFetching) {
+      extraStyles = Styles.hidden
+    }
+
     return (
       <span
-        style={[Styles.mobileButton, StyleConstants.mobile]}
-        onClick={() => rerollScenario(this.props)}>
+        style={[Styles.mobileButton, extraStyles, StyleConstants.mobile]}
+        onClick={this.onSave.bind(this)}>
         Save
       </span>
     )

@@ -36,6 +36,11 @@ let styles = {
     color: Colors.blue.lighter,
     cursor: 'pointer',
   },
+  hidden: {
+    cursor: 'initial',
+    color: 'transparent',
+    height: 0,
+  },
   icon: {
     height: 40,
     position: 'absolute',
