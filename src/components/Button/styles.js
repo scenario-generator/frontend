@@ -32,6 +32,10 @@ export default {
       width: 80,
     },
   },
+  link: {
+    color: 'black',
+    textDecoration: 'none',
+  },
   red: buttonColor(Colors.red.light, Colors.red.primary, Colors.red.dark),
   blue: buttonColor(Colors.blue.light, Colors.blue.primary, Colors.blue.dark),
   green: buttonColor(Colors.green.light, Colors.green.primary, Colors.green.dark),

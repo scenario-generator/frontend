@@ -27,6 +27,17 @@ const Button = Radium(React.createClass ({
   },
 
   render: function() {
+    if(this.props.to) {
+      return (
+        <span style={this.buttonStyle()}>
+          <Link
+            {...this.props}
+            onClick={() => null}
+            style={Styles.link}
+          />
+        </span>
+      )
+    }
     if(this.props.href) {
       return (
         <a
