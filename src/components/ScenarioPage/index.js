@@ -32,11 +32,16 @@ export default Radium(class ScenarioPage extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if(this.props.params.id !== newProps.params.id ||
-       this.props.params.uuid !== newProps.params.uuid) {
+    if(this.shouldReload(newProps.params.id, newProps.params.uuid)) {
       let id = newProps.params.id || 'random';
       fetchScenario(this.props, id, newProps.params.uuid)
     }
+  }
+
+  shouldReload(newId, newUUID) {
+    let idChanged = this.props.params.id !== newId
+    let uuidChanged = this.props.params.uuid !== newUUID
+    return idChanged || uuidChanged
   }
 
   // Callbacks
