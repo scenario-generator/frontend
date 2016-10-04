@@ -26,7 +26,9 @@ export default Radium(class ScenarioPage extends Component {
   // Lifecycle
 
   componentDidMount() {
-    fetchScenario(this.props, false, this.props.params.uuid)
+    if(this.props.generator.slug !== this.props.params.id) {
+      fetchScenario(this.props, this.props.params.id, this.props.params.uuid)
+    }
   }
 
   componentWillReceiveProps(newProps) {
