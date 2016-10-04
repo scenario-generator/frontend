@@ -6,6 +6,7 @@ import Strings from '../constants/strings';
 import {StyleRoot} from 'radium';
 import App from './App';
 import ScenarioContainer from './Scenario';
+import SubscribeContainer from './Subscribe';
 import NotFound from '../components/NotFound';
 import ENV from '../../env'
 
@@ -29,6 +30,7 @@ module.exports = class Routes extends Component {
           <Router history={browserHistory} onUpdate={this.logPageView}>
             <Route path="/" component={App}>
               <IndexRoute component={ScenarioContainer}/>
+              <Route path="subscribe" component={SubscribeContainer} />
               <Route path="generators/:id" component={ScenarioContainer} />
               <Route path="generators/:id/scenario/:uuid" component={ScenarioContainer} />
               <Redirect from="game/:id" to="generators/:id" />
