@@ -43,6 +43,20 @@ let Sidebar = class Sidebar extends Component {
     )
   }
 
+  renderSteamRandomizerLink() {
+    return (
+      <div
+        style={Styles.linkContainer}
+        key={'steam'}>
+        <a
+          href={'http://steam.scenariogenerator.net/'}
+          style={Styles.link}>
+          Random Steam Game
+        </a>
+      </div>
+    )
+  }
+
   renderGenerator(generator) {
     return (
       <div
@@ -63,6 +77,7 @@ let Sidebar = class Sidebar extends Component {
       <div style={this.containerStyles()}>
         <div style={Styles.content}>
           {this.renderRandomGenerator()}
+          {this.renderSteamRandomizerLink()}
           {this.props.generators.map(this.renderGenerator.bind(this))}
         </div>
       </div>
