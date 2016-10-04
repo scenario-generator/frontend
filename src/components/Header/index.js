@@ -37,7 +37,9 @@ export default Radium(class Header extends Component {
   }
 
   renderRerollButton() {
-    if(!this.props.isFetching) {
+    if(this.props.isFetching) {
+      return this.renderSpinner(true)
+    } else {
       return (
         <span
           style={[Styles.mobileButton, StyleConstants.mobile]}
@@ -56,6 +58,18 @@ export default Radium(class Header extends Component {
           style={Styles.title}>
           {Strings.headerTitle}
         </Link>
+      </span>
+    )
+  }
+
+  renderSubscribeLink() {
+    return (
+      <span style={StyleConstants.desktop}>
+        <Button
+          to={'/subscribe'}
+          color='green'>
+          Get Email Updates
+        </Button>
       </span>
     )
   }
@@ -85,13 +99,13 @@ export default Radium(class Header extends Component {
     }
   }
 
-  renderSpinner() {
+  renderSpinner(mobile = false) {
     if(this.props.isFetching) {
       return (
         <span>
           <img
             src={Icons.spinner}
-            style={Styles.icon}
+            style={[Styles.icon, mobile ? StyleConstants.mobile : StyleConstants.desktop]}
           />
         </span>
       )
@@ -99,24 +113,17 @@ export default Radium(class Header extends Component {
   }
 
   render() {
-    if(this.props.isOpen) {
-      return (
-        <div style={Styles.container}>
-          {this.renderTitle()}
-          {this.renderMobileTitle()}
+    return (
+      <div style={Styles.container}>
+        {this.props.isOpen ? null : this.renderSaveButton() }
+        {this.renderTitle()}
+        {this.renderMobileTitle()}
+        {this.props.isOpen ? null : this.renderRerollButton() }
+        <span style={Styles.right}>
           {this.renderSpinner()}
-        </div>
-      )
-    } else {
-      return (
-        <div style={Styles.container}>
-          {this.renderSaveButton()}
-          {this.renderTitle()}
-          {this.renderMobileTitle()}
-          {this.renderRerollButton()}
-          {this.renderSpinner()}
-        </div>
-      )
-    }
+          {this.renderSubscribeLink()}
+        </span>
+      </div>
+    )
   }
 })

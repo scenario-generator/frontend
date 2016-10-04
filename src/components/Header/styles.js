@@ -41,13 +41,18 @@ let styles = {
     color: 'transparent',
     height: 0,
   },
-  icon: {
-    height: 40,
+  right: {
+    float: 'right',
     position: 'absolute',
     right: 10,
     top: 5,
+    display: 'flex',
+    alignItems: 'center',
+    height: 40,
+  },
+  icon: {
+    height: 40,
     '@media (max-device-width: 992px)': {
-      position: 'initial',
       height: 30,
       width: 42,
     },
