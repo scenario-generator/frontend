@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as GeneratorActions from '../actions/GeneratorActions'
 import Colors from '../constants/styles/colors'
+import StyleConstants from '../constants/styles/css'
 import Sizes from '../constants/styles/sizes'
 import HeaderContainer from './Header'
 import TabBarContainer from './TabBar'
@@ -20,12 +21,14 @@ let App = class App extends Component {
           params={this.props.params}
         />
         <div style={Styles.body}>
-          <SidebarContainer />
+          <span style={StyleConstants.desktop}>
+            <SidebarContainer />
+          </span>
           <div style={Styles.childrenContainer}>
-              {children}
+            {children}
           </div>
         </div>
-        <TabBarContainer />
+        <TabBarContainer path={this.props.location.pathname} />
       </div>
     )
   }

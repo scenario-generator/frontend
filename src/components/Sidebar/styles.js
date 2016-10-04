@@ -15,16 +15,6 @@ let styles = {
       width: `${Sizes.sidebarMobile}%`,
     },
   },
-  closed: {
-    '@media (max-device-width: 992px)': {
-      left: '-100%',
-    },
-  },
-  open: {
-    '@media (max-device-width: 992px)': {
-      left: 0,
-    },
-  },
   content: {
   },
   linkContainer: {

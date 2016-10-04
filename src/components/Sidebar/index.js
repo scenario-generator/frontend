@@ -19,16 +19,6 @@ let Sidebar = class Sidebar extends Component {
     this.props.actions.closeSidebar()
   }
 
-  containerStyles() {
-    let styles = [Styles.container]
-    if(this.props.isOpen) {
-      styles = styles.concat(Styles.open)
-    } else {
-      styles = styles.concat(Styles.closed)
-    }
-    return styles
-  }
-
   renderRandomGenerator() {
     return (
       <div
@@ -74,7 +64,7 @@ let Sidebar = class Sidebar extends Component {
 
   render() {
     return (
-      <div style={this.containerStyles()}>
+      <div style={[Styles.container]}>
         <div style={Styles.content}>
           {this.renderRandomGenerator()}
           {this.renderSteamRandomizerLink()}
