@@ -1,6 +1,7 @@
 import {
   RECEIVE_SUBSCRIPTION,
   CREATE_SUBSCRIPTION,
+  FAILED_SUBSCRIPTION,
 } from '../constants/ActionTypes';
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
 const createSubscription = (state, action) =>
   Object.assign({}, state, {
     isCreating: true,
+    status:     null,
   });
 
 const receiveSubscription = (state, action) =>
@@ -19,6 +21,15 @@ const receiveSubscription = (state, action) =>
     isCreating:      false,
     subscribed:      true,
     subscribedEmail: action.subscribedEmail,
+    status:          200,
+  });
+
+const failedSubscription = (state, action) =>
+  Object.assign({}, state, {
+    isCreating: false,
+    subscribed: false,
+    errors:     action.errors,
+    status:     action.status,
   });
 
 export default function scenario(state = initialState, action) {
@@ -27,6 +38,8 @@ export default function scenario(state = initialState, action) {
     return receiveSubscription(state, action)
   case CREATE_SUBSCRIPTION:
     return createSubscription(state, action)
+  case FAILED_SUBSCRIPTION:
+    return failedSubscription(state, action)
   default:
     return state;
   }

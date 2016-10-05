@@ -14,6 +14,7 @@ function mapStateToProps(state) {
     isCreating:      state.subscription.isCreating,
     subscribed:      state.subscription.subscribed,
     subscribedEmail: state.subscription.subscribedEmail,
+    errors:          state.subscription.errors,
   };
 }
 
