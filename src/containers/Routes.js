@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route, browserHistory, IndexRoute, Redirect } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute, Redirect, IndexRedirect } from 'react-router';
 import ReactGA from 'react-ga';
 import DocumentTitle from 'react-document-title';
 import Strings from '../constants/strings';
@@ -30,7 +30,7 @@ module.exports = class Routes extends Component {
         <StyleRoot>
           <Router history={browserHistory} onUpdate={this.logPageView}>
             <Route path="/" component={App}>
-              <IndexRoute component={ScenarioContainer}/>
+              <IndexRedirect to="generators/random" />
               <Route path="generators" component={SidebarContainer} />
               <Route path="subscribe" component={SubscribeContainer} />
               <Route path="generators/:id" component={ScenarioContainer} />
