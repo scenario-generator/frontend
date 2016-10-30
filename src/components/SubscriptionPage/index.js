@@ -22,7 +22,7 @@ export default Radium(class SubscriptionPage extends Component {
     this.props.actions.createSubscription(this.state.email)
   }
 
-  handleChange(event) {
+  onChange(event) {
     this.setState({email: event.target.value});
   }
 
@@ -31,20 +31,18 @@ export default Radium(class SubscriptionPage extends Component {
       <input
         type="text"
         value={this.state.email}
-        onChange={this.handleChange.bind(this)}
+        onChange={this.onChange.bind(this)}
+        style={[StyleConstants.forms.input, Styles.input]}
+        placeholder={Strings.subscribe.placeholder}
+        autoFocus
       />
     );
-  }
-
-  renderHeader() {
-    return (
-      <h1>Get Email Updates</h1>
-    )
   }
 
   renderSubscribeButton() {
     return (
       <Button
+        color={'orange'}
         onClick={this.onSave.bind(this)}>
         Subscribe
       </Button>
@@ -57,16 +55,26 @@ export default Radium(class SubscriptionPage extends Component {
     })
   }
 
+  renderPitch() {
+    return _.map(Strings.subscribe.pitch, function(pitchLine) {
+      return <div>{pitchLine}</div>
+    })
+  }
+
   // Renderers
 
   render() {
+    let formElementCSS = StyleConstants.forms.element;
+
     return (
       <DocumentTitle title={Strings.subscribePageTitle}>
-        <FadedBackground random style={Styles.container}>
-          {this.renderHeader()}
-          {this.renderErrors()}
-          {this.renderEmailInput()}
-          {this.renderSubscribeButton()}
+        <FadedBackground
+          image={Backgrounds['Endless Legend']}
+          style={Styles.container}>
+          {this.renderPitch()}
+          <div style={formElementCSS}>{this.renderErrors()}</div>
+          <div style={[formElementCSS, Styles.inputContainer]}>{this.renderEmailInput()}</div>
+          <div style={formElementCSS}>{this.renderSubscribeButton()}</div>
         </FadedBackground>
       </DocumentTitle>
     );

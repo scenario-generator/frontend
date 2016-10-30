@@ -42,19 +42,19 @@ export default Radium(class TabBar extends Component {
           active={this.active('list')}
           onClick={() => browserHistory.push(`/generators`)}
           icon={'list'}
-          text='Games List'
+          text='All Games'
         />
 
         <Tab
           active={this.active('scenario')}
           icon={'dice'}
           onClick={this.transitionToScenario.bind(this)}
-          text='Scenario'
+          text={this.props.generator.name || 'Random Game'}
         />
 
         <Tab
           active={this.active('subscribe')}
-          icon={'dice'}
+          icon={'email'}
           onClick={() => browserHistory.push(`/subscribe`)}
           text='Subscribe'
         />

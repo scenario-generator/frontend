@@ -9,6 +9,10 @@ let icons = {
     white: '/images/icons/list.svg',
     blue: '/images/icons/list-blue.svg',
   },
+  email: {
+    white: '/images/icons/email.svg',
+    blue: '/images/icons/email-blue.svg',
+  },
   spinner: '/images/icons/spinner.svg',
 }
 

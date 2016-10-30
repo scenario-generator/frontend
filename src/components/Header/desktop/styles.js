@@ -1,5 +1,5 @@
-import Colors from '../../constants/styles/colors'
-import Sizes  from '../../constants/styles/sizes'
+import Colors from '../../../constants/styles/colors'
+import Sizes  from '../../../constants/styles/sizes'
 
 let styles = {
   container: {
@@ -9,53 +9,48 @@ let styles = {
     background: Colors.grey.dark,
     alignItems: 'center',
     position: 'fixed',
+    justifyContent: 'space-between',
     top: 0,
     left: 0,
     zIndex: 10,
     boxSizing: 'border-box',
-    '@media (max-device-width: 992px)': {
-      justifyContent: 'space-around',
-    },
+  },
+  errors: {
+    color: Colors.green.lighter,
+    marginRight: 10,
   },
   title: {
     color: Colors.blue.lighter,
     textDecoration: 'none',
     marginLeft: 15,
-    '@media (max-device-width: 992px)': {
-      marginLeft: 50,
-      marginRight: 50,
-      color: Colors.blue.light,
-    },
+  },
+  titleSpinnerContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  input: {
   },
   titleContainer: {
     fontSize: 20,
   },
   button: {
   },
-  mobileButton: {
-    color: Colors.blue.lighter,
-    cursor: 'pointer',
-  },
   hidden: {
     cursor: 'initial',
     color: 'transparent',
     height: 0,
   },
-  right: {
-    float: 'right',
-    position: 'absolute',
-    right: 10,
-    top: 5,
+  subscription: {
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'center',
     height: 40,
+    marginRight: 15,
   },
   icon: {
     height: 40,
-    '@media (max-device-width: 992px)': {
-      height: 30,
-      width: 42,
-    },
+    marginLeft: 10,
   },
 }
 

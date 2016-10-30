@@ -23,30 +23,33 @@ const Button = Radium(React.createClass ({
       Styles.button,
       this.buttonColorStyle(),
       this.props.style,
+      this.props.attached ? Styles.attached : {},
     ]
   },
 
-  render: function() {
-    if(this.props.to) {
-      return (
-        <span style={this.buttonStyle()}>
-          <Link
-            {...this.props}
-            onClick={() => null}
-            style={Styles.link}
-          />
-        </span>
-      )
-    }
-    if(this.props.href) {
-      return (
-        <a
+  renderLinkButton: function() {
+    return (
+      <span style={this.buttonStyle()}>
+        <Link
           {...this.props}
-          style={this.buttonStyle()}
-          onClick={false}
+          onClick={() => null}
+          style={Styles.link}
         />
-      )
-    }
+      </span>
+    )
+  },
+
+  renderHrefButton: function() {
+    return (
+      <a
+        {...this.props}
+        style={this.buttonStyle()}
+        onClick={false}
+      />
+    )
+  },
+
+  renderOnClickButton: function() {
     return (
       <button
         onClick={this.props.onClick}
@@ -54,6 +57,12 @@ const Button = Radium(React.createClass ({
         style={this.buttonStyle()}
       />
     )
+  },
+
+  render: function() {
+    if(this.props.to)     { return this.renderLinkButton() }
+    if(this.props.href)   { return this.renderHrefButton() }
+    return this.renderOnClickButton()
   }
 }))
 

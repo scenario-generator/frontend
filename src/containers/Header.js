@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as ScenarioActions from '../actions/ScenarioActions';
+import * as SubscriptionActions from '../actions/SubscriptionActions';
 import Header from '../components/Header';
 
 /**
@@ -11,9 +12,12 @@ import Header from '../components/Header';
  */
 function mapStateToProps(state) {
   return {
-    scenario: state.scenario.scenario,
-    generator: state.scenario.generator,
-    isFetching: state.generators.isFetching || state.scenario.isFetching || state.subscription.isCreating,
+    scenario:        state.scenario.scenario,
+    generator:       state.scenario.generator,
+    isFetching:      state.generators.isFetching || state.scenario.isFetching || state.subscription.isCreating,
+    subscribed:      state.subscription.subscribed,
+    subscribedEmail: state.subscription.subscribedEmail,
+    errors:          state.subscription.errors,
   };
 }
 
@@ -27,7 +31,8 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(ScenarioActions, dispatch)
+    actions: bindActionCreators(ScenarioActions, dispatch),
+    subscribeActions: bindActionCreators(SubscriptionActions, dispatch)
   };
 }
 

@@ -29,8 +29,14 @@ export default {
     width: 130,
     boxSizing: 'content-box',
     '@media (max-device-width: 992px)': {
-      width: 80,
+      width: 150,
+      fontSize: 18,
     },
+  },
+  attached: {
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+    width: 'initial',
   },
   link: {
     color: 'black',

@@ -14,7 +14,8 @@ let toRGB = function(hex, opacity = 1) {
 let styles = {
   grey: {
     dark: '#222',
-    light: '#ccc'
+    light: '#ccc',
+    lighter: '#f9f9f9',
   },
   orange: {
     light: '#eb9f4a',
@@ -27,6 +28,7 @@ let styles = {
     dark: '#992c2c',
   },
   blue: {
+    extremely_light: '#c7e3ff',
     primary: '#476079',
     lighter: '#94A2B0',
     light:   '#687D91',
