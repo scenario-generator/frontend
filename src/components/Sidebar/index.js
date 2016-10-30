@@ -7,7 +7,7 @@ import Styles from './styles'
 
 let Sidebar = class Sidebar extends Component {
   componentDidMount() {
-    this.props.generatorActions.fetchGenerators()
+    this.props.actions.fetchGenerators()
   }
 
   randomGeneratorID() {

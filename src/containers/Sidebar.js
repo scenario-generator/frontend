@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as GeneratorActions from '../actions/GeneratorActions';
-import * as SidebarActions from '../actions/SidebarActions';
 import Sidebar from '../components/Sidebar';
 
 /**
@@ -13,8 +12,8 @@ import Sidebar from '../components/Sidebar';
 function mapStateToProps(state) {
   return {
     generators: state.generators.generators,
+    scenario: state.scenario,
     isFetching: state.generators.isFetching || state.scenario.isFetching,
-    isOpen: state.sidebar.isOpen,
   };
 }
 
@@ -28,8 +27,7 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    generatorActions: bindActionCreators(GeneratorActions, dispatch),
-    actions: bindActionCreators(SidebarActions, dispatch),
+    actions: bindActionCreators(GeneratorActions, dispatch),
   };
 }
 
