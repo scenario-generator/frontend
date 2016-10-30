@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import generators from './generators';
-import scenario from './scenario';
-import sidebar from './sidebar';
+import generators   from './generators';
+import scenario     from './scenario';
+import subscription from './subscription';
 
 /**
  * combineReducers is important to understand. As your app might grow in size
@@ -19,7 +19,7 @@ import sidebar from './sidebar';
 const rootReducer = combineReducers({
   generators,
   scenario,
-  sidebar
+  subscription
 });
 
 export default rootReducer;

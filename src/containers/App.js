@@ -4,28 +4,61 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as GeneratorActions from '../actions/GeneratorActions'
 import Colors from '../constants/styles/colors'
+import StyleConstants from '../constants/styles/css'
 import Sizes from '../constants/styles/sizes'
 import HeaderContainer from './Header'
 import TabBarContainer from './TabBar'
 import SidebarContainer from './Sidebar'
 
 let App = class App extends Component {
+  renderHeader(path) {
+    return (
+      <HeaderContainer
+        params={this.props.params}
+        path={path}
+      />
+    )
+  }
+
+  renderSidebar(path) {
+    return (
+      <span style={StyleConstants.desktop}>
+        <SidebarContainer path={path} id={this.props.params.id} />
+      </span>
+    )
+  }
+
+  renderContent(content) {
+    return (
+      <div style={Styles.childrenContainer}>
+        {content}
+      </div>
+    )
+  }
+
+  renderTabBar(path) {
+    return (
+      <TabBarContainer path={path} />
+    )
+  }
+
   render() {
     document.body.style.backgroundColor = Colors.blue.primary;
 
-    const { generators, actions, children } = this.props
+    const { generators, actions, children } = this.props;
+
+    let path = this.props.location.pathname;
+
     return (
       <div style={Styles.container}>
-        <HeaderContainer
-          params={this.props.params}
-        />
+        {this.renderHeader(path)}
+
         <div style={Styles.body}>
-          <SidebarContainer />
-          <div style={Styles.childrenContainer}>
-              {children}
-          </div>
+          {this.renderSidebar(path)}
+          {this.renderContent(children)}
         </div>
-        <TabBarContainer />
+
+        {this.renderTabBar(path)}
       </div>
     )
   }

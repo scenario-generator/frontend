@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import { Router, Route, browserHistory, IndexRoute, Redirect } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute, Redirect, IndexRedirect } from 'react-router';
 import ReactGA from 'react-ga';
 import DocumentTitle from 'react-document-title';
 import Strings from '../constants/strings';
 import {StyleRoot} from 'radium';
 import App from './App';
 import ScenarioContainer from './Scenario';
+import SidebarContainer from './Sidebar';
+import SubscribeContainer from './Subscribe';
+import Faq from '../components/Faq';
 import NotFound from '../components/NotFound';
 import ENV from '../../env'
 
@@ -28,9 +31,12 @@ module.exports = class Routes extends Component {
         <StyleRoot>
           <Router history={browserHistory} onUpdate={this.logPageView}>
             <Route path="/" component={App}>
-              <IndexRoute component={ScenarioContainer}/>
+              <IndexRedirect to="generators/random" />
+              <Route path="generators" component={SidebarContainer} />
+              <Route path="subscribe" component={SubscribeContainer} />
               <Route path="generators/:id" component={ScenarioContainer} />
               <Route path="generators/:id/scenario/:uuid" component={ScenarioContainer} />
+              <Route path="faq" component={Faq} />
               <Redirect from="game/:id" to="generators/:id" />
               <Redirect from="game/:id/scenario/:uuid" to="generators/:id/scenario/:uuid" />
               <Route path="*" component={NotFound} />

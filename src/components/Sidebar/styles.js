@@ -15,16 +15,6 @@ let styles = {
       width: `${Sizes.sidebarMobile}%`,
     },
   },
-  closed: {
-    '@media (max-device-width: 992px)': {
-      left: '-100%',
-    },
-  },
-  open: {
-    '@media (max-device-width: 992px)': {
-      left: 0,
-    },
-  },
   content: {
   },
   linkContainer: {
@@ -33,7 +23,6 @@ let styles = {
     textAlign: 'center',
     padding: '10px 0px',
     borderTop: `1px solid transparent`,
-    margin: '0px 10px',
     borderBottom: `1px solid ${Colors.grey.dark}`,
     ':hover': {
     },
@@ -42,6 +31,9 @@ let styles = {
     color: Colors.blue.lighter,
     textDecoration: 'none',
     cursor: 'pointer',
+  },
+  activeLinkContainer: {
+    background: Colors.blue.primary,
   }
 }
 

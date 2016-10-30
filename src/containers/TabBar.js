@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as SidebarActions from '../actions/SidebarActions';
 import TabBar from '../components/TabBar';
 
 /**
@@ -12,7 +11,8 @@ import TabBar from '../components/TabBar';
 function mapStateToProps(state) {
   return {
     isFetching: state.generators.isFetching || state.scenario.isFetching,
-    isOpen: state.sidebar.isOpen,
+    scenario: state.scenario.scenario,
+    generator: state.scenario.generator,
   };
 }
 
@@ -25,9 +25,7 @@ function mapStateToProps(state) {
  * More info: http://redux.js.org/docs/api/bindActionCreators.html
  */
 function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(SidebarActions, dispatch)
-  };
+  return {};
 }
 
 /**

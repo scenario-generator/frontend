@@ -1,9 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as ScenarioActions from '../actions/ScenarioActions';
 import * as SubscriptionActions from '../actions/SubscriptionActions';
-import Header from '../components/Header';
+import SubscriptionPage from '../components/SubscriptionPage';
 
 /**
  * Keep in mind that 'state' isn't the state of local object, but your single
@@ -12,9 +11,7 @@ import Header from '../components/Header';
  */
 function mapStateToProps(state) {
   return {
-    scenario:        state.scenario.scenario,
-    generator:       state.scenario.generator,
-    isFetching:      state.generators.isFetching || state.scenario.isFetching || state.subscription.isCreating,
+    isCreating:      state.subscription.isCreating,
     subscribed:      state.subscription.subscribed,
     subscribedEmail: state.subscription.subscribedEmail,
     errors:          state.subscription.errors,
@@ -31,8 +28,7 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(ScenarioActions, dispatch),
-    subscribeActions: bindActionCreators(SubscriptionActions, dispatch)
+    actions: bindActionCreators(SubscriptionActions, dispatch)
   };
 }
 
@@ -47,4 +43,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Header);
+)(SubscriptionPage);

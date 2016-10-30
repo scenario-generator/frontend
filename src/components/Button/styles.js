@@ -29,8 +29,18 @@ export default {
     width: 130,
     boxSizing: 'content-box',
     '@media (max-device-width: 992px)': {
-      width: 80,
+      width: 150,
+      fontSize: 18,
     },
+  },
+  attached: {
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+    width: 'initial',
+  },
+  link: {
+    color: 'black',
+    textDecoration: 'none',
   },
   red: buttonColor(Colors.red.light, Colors.red.primary, Colors.red.dark),
   blue: buttonColor(Colors.blue.light, Colors.blue.primary, Colors.blue.dark),

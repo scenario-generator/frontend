@@ -4,10 +4,16 @@ import { Link } from 'react-router'
 import FadedBackground from '../FadedBackground'
 import Styles from './styles'
 import CSS from '../../constants/styles/css'
+import ENV from '../../../env'
 
 let NotFound = class NotFound extends Component {
+  email() {
+    return ENV.email
+  }
+
   render() {
-    let email = 'daniel@scenariogenerator.net';
+    let email = this.email();
+
     return (
       <FadedBackground
         random

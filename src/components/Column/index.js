@@ -79,7 +79,6 @@ export default Radium(class ScenarioPage extends Component {
   }
 
   renderOptions(column) {
-
     if(column.options.length < 1) {
       return this.renderOption('None', column.id)
     }

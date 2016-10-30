@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Radium from 'radium';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import Styles from './styles'
 import Button from '../Button'
 import Strings from '../../constants/strings'
@@ -19,21 +19,44 @@ const Tab = Radium(props => (
 ));
 
 export default Radium(class TabBar extends Component {
+  active(tab) {
+    return (
+      (tab == 'list' && this.props.path == '/generators') ||
+      (tab == 'subscribe' && this.props.path == '/subscribe') ||
+      (tab == 'scenario' && this.props.path != '/subscribe' && this.props.path != '/generators')
+    )
+  }
+
+  previousGenerator() {
+    return this.props.generator && this.props.generator.slug ? this.props.generator.slug : 'random'
+  }
+
+  transitionToScenario() {
+    browserHistory.push(`/generators/${this.previousGenerator()}`)
+  }
+
   render() {
     return (
       <div style={Styles.container}>
         <Tab
-          active={this.props.isOpen}
-          onClick={this.props.actions.openSidebar}
+          active={this.active('list')}
+          onClick={() => browserHistory.push(`/generators`)}
           icon={'list'}
-          text='Games List'
+          text='All Games'
         />
 
         <Tab
-          active={!this.props.isOpen}
+          active={this.active('scenario')}
           icon={'dice'}
-          onClick={this.props.actions.closeSidebar}
-          text='Scenario'
+          onClick={this.transitionToScenario.bind(this)}
+          text={this.props.generator.name || 'Random Game'}
+        />
+
+        <Tab
+          active={this.active('subscribe')}
+          icon={'email'}
+          onClick={() => browserHistory.push(`/subscribe`)}
+          text='Subscribe'
         />
       </div>
     );

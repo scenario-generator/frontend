@@ -26,15 +26,22 @@ export default Radium(class ScenarioPage extends Component {
   // Lifecycle
 
   componentDidMount() {
-    fetchScenario(this.props, false, this.props.params.uuid)
+    if(this.props.generator.slug !== this.props.params.id) {
+      fetchScenario(this.props, this.props.params.id, this.props.params.uuid)
+    }
   }
 
   componentWillReceiveProps(newProps) {
-    if(this.props.params.id !== newProps.params.id ||
-       this.props.params.uuid !== newProps.params.uuid) {
+    if(this.shouldReload(newProps.params.id, newProps.params.uuid)) {
       let id = newProps.params.id || 'random';
       fetchScenario(this.props, id, newProps.params.uuid)
     }
+  }
+
+  shouldReload(newId, newUUID) {
+    let idChanged = this.props.params.id !== newId
+    let uuidChanged = this.props.params.uuid !== newUUID
+    return idChanged || uuidChanged
   }
 
   // Callbacks
@@ -48,17 +55,9 @@ export default Radium(class ScenarioPage extends Component {
   documentTitle() {
     if(this.props.generator) {
       let type = this.props.generator.kind || 'Scenario'
-      return `${type} generator for ${this.props.generator.name}`
+      return Strings.generatorPageTitle(type, this.props.generator.name)
     }
     return Strings.rootPageTitle
-  }
-
-  renderTitle() {
-    return (
-      <div style={Styles.title}>
-        {this.props.generator.name}
-      </div>
-    )
   }
 
   renderButtons() {
@@ -76,7 +75,7 @@ export default Radium(class ScenarioPage extends Component {
       <Button
         onClick={() => rerollScenario(this.props)}
         color={'orange'}>
-        Reroll
+        {Strings.buttons.reroll}
       </Button>
     )
   }
@@ -87,7 +86,7 @@ export default Radium(class ScenarioPage extends Component {
       <Button
         color={'purple'}
         onClick={this.onSave.bind(this)}>
-        Save
+        {Strings.buttons.save}
       </Button>
     )
   }
@@ -98,11 +97,11 @@ export default Radium(class ScenarioPage extends Component {
         <Button
           href={this.props.generator.ad_link}
           color={'red'}>
-          Get Game
+          {Strings.buttons.getGame}
         </Button>
       )
     }
-    return <Button color='' />
+    return <Button hidden />
   }
 
   render() {
@@ -115,12 +114,11 @@ export default Radium(class ScenarioPage extends Component {
     return (
       <DocumentTitle title={this.documentTitle()}>
         <FadedBackground image={image}>
-          {this.renderTitle()}
-          {this.renderButtons()}
           <Ad
             size='halfBanner'
             key={this.props.generator.name}
           />
+          {this.renderButtons()}
           <Scenario
             {...this.props}
             scenario={this.props.scenario}

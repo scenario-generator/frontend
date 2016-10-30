@@ -1,6 +1,8 @@
+import Colors from '../../constants/styles/colors'
+
 let styles = {
   text: {
-    color: 'white',
+    color: Colors.grey.lighter,
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
