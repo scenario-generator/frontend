@@ -36,6 +36,14 @@ let styles = {
   },
   button: {
   },
+  right: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  emailButton: {
+    marginRight: 15,
+  },
   hidden: {
     cursor: 'initial',
     color: 'transparent',

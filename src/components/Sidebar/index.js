@@ -19,7 +19,6 @@ let Sidebar = class Sidebar extends Component {
   }
 
   activeStyles(buttonKey) {
-    debugger
     if(this.props.path == `/${buttonKey}`) {
       return Styles.activeLinkContainer
     }

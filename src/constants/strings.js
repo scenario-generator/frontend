@@ -19,6 +19,7 @@ let strings = {
     reroll: 'Reroll',
     save: 'Save',
     getGame: 'Get Game',
+    suggestion: 'Send me an email'
   },
   faq: {
     title: 'FAQ',

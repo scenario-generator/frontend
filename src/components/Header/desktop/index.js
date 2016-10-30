@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Radium               from 'radium';
 import { Link }             from 'react-router';
 
+import ENV from '../../../../env'
+
 import Styles                from './styles'
 import StyleConstants        from '../../../constants/styles/css'
 import Icons                 from '../../../constants/images/icons'
@@ -69,6 +71,18 @@ export default Radium(class DesktopHeader extends Component {
     )
   }
 
+  renderEmailButton() {
+    return (
+      <span style={Styles.emailButton}>
+        <Button
+          color={'orange'}
+          href={`mailto:${ENV.email}`}>
+          {Strings.buttons.suggestion}
+        </Button>
+      </span>
+    )
+  }
+
   renderSpinner() {
     if(this.props.isFetching) {
       return (
@@ -89,7 +103,10 @@ export default Radium(class DesktopHeader extends Component {
           {this.renderTitle()}
           {this.renderSpinner()}
         </span>
-        {this.renderSubscribeForm()}
+        <span style={Styles.right}>
+          {this.renderSubscribeForm()}
+          {this.renderEmailButton()}
+        </span>
       </div>
     )
   }
