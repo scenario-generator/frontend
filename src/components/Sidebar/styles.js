@@ -18,22 +18,24 @@ let styles = {
   content: {
   },
   linkContainer: {
-    display: 'flex',
+    display: 'block',
     justifyContent: 'center',
     textAlign: 'center',
     padding: '10px 0px',
     borderTop: `1px solid transparent`,
     borderBottom: `1px solid ${Colors.grey.dark}`,
+    cursor: 'pointer',
+    textDecoration: 'none',
+    color: Colors.blue.lighter,
+    textDecoration: 'none',
     ':hover': {
     },
   },
   link: {
-    color: Colors.blue.lighter,
-    textDecoration: 'none',
-    cursor: 'pointer',
   },
   activeLinkContainer: {
     background: Colors.blue.primary,
+    cursor: 'default',
   }
 }
 

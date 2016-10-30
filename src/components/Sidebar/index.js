@@ -16,7 +16,6 @@ let Sidebar = class Sidebar extends Component {
 
   navigateToRandomGenerator() {
     browserHistory.push(`/generators/${this.randomGeneratorID()}`)
-    this.props.actions.closeSidebar()
   }
 
   activeStyles(buttonKey) {
@@ -33,56 +32,47 @@ let Sidebar = class Sidebar extends Component {
     return (
       <div
         style={Styles.linkContainer}
+        onClick={this.navigateToRandomGenerator.bind(this)}
         key={'random'}>
-        <span
-          onClick={this.navigateToRandomGenerator.bind(this)}
-          style={Styles.link}>
-          Random Generator
-        </span>
+        Random Generator
       </div>
     )
   }
 
   renderSteamRandomizerLink() {
     return (
-      <div
+      <a
         style={Styles.linkContainer}
+        href={'http://steam.scenariogenerator.net/'}
         key={'steam'}>
-        <a
-          href={'http://steam.scenariogenerator.net/'}
-          style={Styles.link}>
-          Random Steam Game
-        </a>
-      </div>
+        Random Steam Game
+      </a>
     )
   }
 
   renderFAQLink() {
+    let styles = _.merge(Styles.linkContainer, this.activeStyles('faq'))
+
     return (
-      <div
-        style={[Styles.linkContainer, this.activeStyles('faq')]}
+      <Link
+        style={styles}
+        to={'/faq'}
         key={'faq'}>
-        <Link
-          to={'/faq'}
-          style={Styles.link}>
-          FAQ
-        </Link>
-      </div>
+        FAQ
+      </Link>
     )
   }
 
   renderGenerator(generator) {
+    let styles = _.merge({}, Styles.linkContainer, this.activeStyles(generator.slug))
+
     return (
-      <div
-        style={[Styles.linkContainer, this.activeStyles(generator.slug)]}
+      <Link
+        to={`/generators/${generator.slug}`}
+        style={styles}
         key={generator.id}>
-        <Link
-          to={`/generators/${generator.slug}`}
-          onClick={this.props.actions.closeSidebar}
-          style={Styles.link}>
-          {generator.name}
-        </Link>
-      </div>
+        {generator.name}
+      </Link>
     )
   }
 
