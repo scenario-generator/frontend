@@ -109,7 +109,7 @@ export default Radium(class ScenarioPage extends Component {
         </Button>
       )
     }
-    return <Button color='' />
+    return <Button hidden />
   }
 
   render() {

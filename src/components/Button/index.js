@@ -27,6 +27,12 @@ const Button = Radium(React.createClass ({
     ]
   },
 
+  renderHiddenButton: function() {
+    return (
+      <span style={Styles.button} />
+    )
+  },
+
   renderLinkButton: function() {
     return (
       <span style={this.buttonStyle()}>
@@ -60,6 +66,7 @@ const Button = Radium(React.createClass ({
   },
 
   render: function() {
+    if(this.props.hidden) { return this.renderHiddenButton() }
     if(this.props.to)     { return this.renderLinkButton() }
     if(this.props.href)   { return this.renderHrefButton() }
     return this.renderOnClickButton()
