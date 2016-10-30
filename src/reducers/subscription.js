@@ -8,12 +8,14 @@ const initialState = {
   isCreating:      false,
   subscribed:      false,
   subscribedEmail: '',
+  errors:     null,
 }
 
 const createSubscription = (state, action) =>
   Object.assign({}, state, {
     isCreating: true,
     status:     null,
+    errors:     null,
   });
 
 const receiveSubscription = (state, action) =>
@@ -22,6 +24,7 @@ const receiveSubscription = (state, action) =>
     subscribed:      true,
     subscribedEmail: action.subscribedEmail,
     status:          200,
+    errors:          null,
   });
 
 const failedSubscription = (state, action) =>
