@@ -13,6 +13,13 @@ let strings = {
     ],
     placeholder: 'Email Address',
   },
+  buttons: {
+    subscribe: 'Subscribe',
+    subscribeHeader: 'Subscribe For Updates',
+    reroll: 'Reroll',
+    save: 'Save',
+    getGame: 'Get Game',
+  },
   faq: {
     title: 'FAQ',
     questions: FaqQuestions
