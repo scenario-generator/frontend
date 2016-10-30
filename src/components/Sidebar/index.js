@@ -19,6 +19,7 @@ let Sidebar = class Sidebar extends Component {
   }
 
   activeStyles(buttonKey) {
+    debugger
     if(this.props.path == `/${buttonKey}`) {
       return Styles.activeLinkContainer
     }
@@ -51,7 +52,7 @@ let Sidebar = class Sidebar extends Component {
   }
 
   renderFAQLink() {
-    let styles = _.merge(Styles.linkContainer, this.activeStyles('faq'))
+    let styles = _.merge({}, Styles.linkContainer, this.activeStyles('faq'))
 
     return (
       <Link
