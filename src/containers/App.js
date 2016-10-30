@@ -11,24 +11,54 @@ import TabBarContainer from './TabBar'
 import SidebarContainer from './Sidebar'
 
 let App = class App extends Component {
+  renderHeader(path) {
+    return (
+      <HeaderContainer
+        params={this.props.params}
+        path={path}
+      />
+    )
+  }
+
+  renderSidebar(path) {
+    return (
+      <span style={StyleConstants.desktop}>
+        <SidebarContainer path={path} id={this.props.params.id} />
+      </span>
+    )
+  }
+
+  renderContent(content) {
+    return (
+      <div style={Styles.childrenContainer}>
+        {content}
+      </div>
+    )
+  }
+
+  renderTabBar(path) {
+    return (
+      <TabBarContainer path={path} />
+    )
+  }
+
   render() {
     document.body.style.backgroundColor = Colors.blue.primary;
 
-    const { generators, actions, children } = this.props
+    const { generators, actions, children } = this.props;
+
+    let path = this.props.location.pathname;
+
     return (
       <div style={Styles.container}>
-        <HeaderContainer
-          params={this.props.params}
-        />
+        {this.renderHeader(path)}
+
         <div style={Styles.body}>
-          <span style={StyleConstants.desktop}>
-            <SidebarContainer />
-          </span>
-          <div style={Styles.childrenContainer}>
-            {children}
-          </div>
+          {this.renderSidebar(path)}
+          {this.renderContent(children)}
         </div>
-        <TabBarContainer path={this.props.location.pathname} />
+
+        {this.renderTabBar(path)}
       </div>
     )
   }
