@@ -8,7 +8,7 @@ let styles = {
     backgroundSize: 'cover',
     backgroundPosition: '0 0',
     backgroundRepeat: 'no-repeat',
-    position: 'absolute',
+    position: 'fixed',
     opacity: 0.3,
   },
   container: {
