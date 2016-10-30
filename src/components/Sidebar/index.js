@@ -19,6 +19,16 @@ let Sidebar = class Sidebar extends Component {
     this.props.actions.closeSidebar()
   }
 
+  activeStyles(buttonKey) {
+    if(this.props.path == `/${buttonKey}`) {
+      return Styles.activeLinkContainer
+    }
+    if(this.props.id == buttonKey) {
+      return Styles.activeLinkContainer
+    }
+    return {}
+  }
+
   renderRandomGenerator() {
     return (
       <div
@@ -47,10 +57,24 @@ let Sidebar = class Sidebar extends Component {
     )
   }
 
+  renderFAQLink() {
+    return (
+      <div
+        style={[Styles.linkContainer, this.activeStyles('faq')]}
+        key={'faq'}>
+        <Link
+          to={'/faq'}
+          style={Styles.link}>
+          FAQ
+        </Link>
+      </div>
+    )
+  }
+
   renderGenerator(generator) {
     return (
       <div
-        style={Styles.linkContainer}
+        style={[Styles.linkContainer, this.activeStyles(generator.slug)]}
         key={generator.id}>
         <Link
           to={`/generators/${generator.slug}`}
@@ -69,6 +93,7 @@ let Sidebar = class Sidebar extends Component {
           {this.renderRandomGenerator()}
           {this.renderSteamRandomizerLink()}
           {this.props.generators.map(this.renderGenerator.bind(this))}
+          {this.renderFAQLink()}
         </div>
       </div>
     );
