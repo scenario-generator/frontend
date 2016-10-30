@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
-import generators from './generators';
-import scenario from './scenario';
-import sidebar from './sidebar';
+import generators   from './generators';
+import scenario     from './scenario';
 import subscription from './subscription';
 
 /**
@@ -20,7 +19,6 @@ import subscription from './subscription';
 const rootReducer = combineReducers({
   generators,
   scenario,
-  sidebar,
   subscription
 });
 
