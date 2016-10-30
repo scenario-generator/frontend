@@ -11,7 +11,7 @@ let styles = {
     },
   },
   columnName: {
-    background: Colors.toRGB(Colors.grey.dark, 0.7),
+    background: Colors.toRGB(Colors.grey.dark, 0.8),
     color: Colors.blue.lighter,
     padding: 5,
     display: 'flex',
@@ -33,7 +33,7 @@ let styles = {
     padding: '5px 5px 0px',
   },
   option: {
-    background: Colors.toRGB(Colors.grey.dark, 0.5),
+    background: Colors.toRGB(Colors.grey.dark, 0.6),
     color: Colors.blue.lighter,
     padding: 5,
     borderBottom: `1px solid ${Colors.grey.dark}`,

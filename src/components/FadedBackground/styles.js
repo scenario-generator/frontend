@@ -9,7 +9,7 @@ let styles = {
     backgroundPosition: '0 0',
     backgroundRepeat: 'no-repeat',
     position: 'fixed',
-    opacity: 0.3,
+    opacity: 0.5,
   },
   container: {
     position: 'relative',
