@@ -60,14 +60,6 @@ export default Radium(class ScenarioPage extends Component {
     return Strings.rootPageTitle
   }
 
-  renderTitle() {
-    return (
-      <div style={Styles.title}>
-        {this.props.generator.name}
-      </div>
-    )
-  }
-
   renderButtons() {
     return (
       <div style={[Styles.buttonBar, StyleConstants.desktop]}>
@@ -122,12 +114,11 @@ export default Radium(class ScenarioPage extends Component {
     return (
       <DocumentTitle title={this.documentTitle()}>
         <FadedBackground image={image}>
-          {this.renderTitle()}
-          {this.renderButtons()}
           <Ad
             size='halfBanner'
             key={this.props.generator.name}
           />
+          {this.renderButtons()}
           <Scenario
             {...this.props}
             scenario={this.props.scenario}
