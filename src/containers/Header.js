@@ -14,7 +14,6 @@ function mapStateToProps(state) {
     scenario: state.scenario.scenario,
     generator: state.scenario.generator,
     isFetching: state.generators.isFetching || state.scenario.isFetching || state.subscription.isCreating,
-    isOpen: state.sidebar.isOpen,
   };
 }
 
