@@ -4,7 +4,7 @@
   "description": "Frontend app for scenariogenerator.net",
   "scripts": {
     "clean": "rimraf dist/bundle.js*",
-    "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js --progress",
     "build": "npm run clean && npm run build:webpack",
     "dev": "NODE_ENV=development npm start",
     "start": "node devServer.js",
