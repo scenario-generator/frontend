@@ -16,6 +16,8 @@ export default Radium(class Ad extends Component {
   }
 
   render() {
+    if(!this.props.ckey) { return false }
+
     return (
       <div style={Styles.container}>
         {this.renderAdsense()}
