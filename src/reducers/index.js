@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux';
 import generators   from './generators';
 import scenario     from './scenario';
 import subscription from './subscription';
@@ -19,7 +20,8 @@ import subscription from './subscription';
 const rootReducer = combineReducers({
   generators,
   scenario,
-  subscription
+  subscription,
+  routing: routerReducer
 });
 
 export default rootReducer;

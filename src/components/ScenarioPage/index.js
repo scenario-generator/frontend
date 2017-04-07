@@ -53,7 +53,7 @@ export default Radium(class ScenarioPage extends Component {
   // Renderers
 
   documentTitle() {
-    if(this.props.generator) {
+    if(this.props.params.id && this.props.params.id != 'random') {
       let type = this.props.generator.kind || 'Scenario'
       return Strings.generatorPageTitle(type, this.props.generator.name)
     }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import App from './App';
-import Routes from './Routes';
+import Router from './Router';
 
 /**
  * Component is exported for conditional usage in Root.js
@@ -16,7 +16,7 @@ module.exports = class Root extends Component {
        * calls in component hierarchy below.
        */
       <Provider store={store}>
-        <Routes />
+        <Router />
       </Provider>
     );
   }
