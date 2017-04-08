@@ -1,5 +1,11 @@
 let generatorID = function(props) {
-  return props.generator.slug || props.params.id || 'random'
+  if(props.generator && props.generator.slug) {
+  	return props.generator.slug
+  } else if(props.params && props.params.id) {
+  	return props.params.id
+  }
+
+  return 'random'
 }
 
 let getScenarioActionHash = function(props, id = false, uuid = false) {
