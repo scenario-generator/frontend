@@ -27,6 +27,7 @@ task deploy: :environment do
     invoke :'deploy:link_shared_paths'
     queue! 'npm install'
     queue  'npm run build'
+    queue  'npm run serve'
     invoke :'deploy:cleanup'
   end
 end
