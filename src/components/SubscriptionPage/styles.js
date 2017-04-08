@@ -1,8 +1,8 @@
 import Colors from '../../constants/styles/colors'
 
 let styles = {
-	container: {
-		color: Colors.blue.extremely_light,
+  container: {
+    color: Colors.blue.extremely_light,
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
@@ -14,7 +14,7 @@ let styles = {
       paddingLeft: 25,
       paddingRight: 25,
     },
-	},
+  },
   inputContainer: {
     width: '50%',
     marginTop: 20,
