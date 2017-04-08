@@ -27,6 +27,10 @@ if(process.env.NODE_ENV === 'development') {
   app.use(express.static(path.resolve(__dirname, 'dist')));
 }
 
+app.get(/images/, (req, res) => {
+  res.sendFile(pathToAsset(req))
+})
+
 app.get('*', middleware);
 
 app.listen(3000, '0.0.0.0', (err) => {
@@ -36,3 +40,9 @@ app.listen(3000, '0.0.0.0', (err) => {
     console.info('Listening at http://localhost:3000');
   }
 });
+
+function pathToAsset(req) {
+  var directory = process.env.NODE_ENV === 'development' ? 'src' : 'dist'
+
+  return path.join(__dirname, directory, 'assets', req.originalUrl)
+}
