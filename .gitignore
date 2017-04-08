@@ -3,6 +3,6 @@ node_modules
 .DS_Store
 lib
 coverage
-dist/bundle.js*
+dist/*
 config/deploy.rb
 env.js
