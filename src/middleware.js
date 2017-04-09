@@ -63,6 +63,7 @@ function createPage(html, store) {
     <!doctype html>
     <html>
       <head>
+        <title>Scenario Generator | Random Challenges for Popular Games</title>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
         <meta name="viewport" content="initial-scale=1">
         <meta property="og:title" content="Scenario Generator | Random Challenges for Popular Games" />
