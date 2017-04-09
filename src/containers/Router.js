@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { StyleRoot } from 'radium';
 import { Router, browserHistory } from 'react-router';
 import ReactGA from 'react-ga';
 import DocumentTitle from 'react-document-title';
@@ -20,13 +21,17 @@ module.exports = class RouterComponent extends Component {
   }
 
   render() {
+    var history = this.props.history;
+
     return (
       <DocumentTitle title={Strings.rootPageTitle}>
-        <Router
-          history={browserHistory}
-          onUpdate={this.logPageView}>
-          { routes }
-        </Router>
+        <StyleRoot>
+          <Router
+            history={history}
+            onUpdate={this.logPageView}>
+            { routes }
+          </Router>
+        </StyleRoot>
       </DocumentTitle>
     );
   }
