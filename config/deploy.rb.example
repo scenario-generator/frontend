@@ -25,12 +25,13 @@ task deploy: :environment do
   deploy do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
-    queue! 'npm stop server'
-    queue! 'npm delete server'
+    queue! 'pm2 stop server; pm2 delete server; echo "server stopped"'
+    queue! "echo 'installing'"
     queue! 'npm install'
+    queue! "echo 'building'"
     queue! 'npm run build'
+    queue! "echo 'serving'"
     queue! 'npm run serve'
-    queue! 'pm2 startup ubuntu'
     invoke :'deploy:cleanup'
   end
 end

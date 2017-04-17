@@ -7,8 +7,7 @@
     "lint": "eslint ./src",
     "start": "cross-env NODE_ENV=development babel-node ./server.js",
     "build": "rimraf dist && webpack --config ./webpack.config.prod.js",
-    "serve": "cross-env NODE_ENV=production pm2 start --interpreter babel-node ./server.js",
-    "serve-background": "npm run serve &"
+    "serve": "cross-env NODE_ENV=production pm2 start --interpreter babel-node ./server.js"
   },
   "author": "Justin Jung <justinjung04@gmail.com>",
   "license": "MIT",
