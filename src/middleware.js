@@ -35,7 +35,11 @@ export default (req, res) => {
           actions: ScenarioActions,
         }
 
-        store.dispatch(fetchScenario(fetchScenarioProps)).then(function () {
+        store.dispatch(
+          fetchScenario(fetchScenarioProps,
+                        fetchScenarioProps.params.id,
+                        fetchScenarioProps.params.uuid)
+        ).then(function () {
           if(process.env.NODE_ENV == 'production') {
             appHTML = renderToString(
               <Provider store={store}>
