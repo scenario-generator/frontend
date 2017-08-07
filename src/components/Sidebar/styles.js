@@ -19,6 +19,9 @@ let styles = {
     zIndex: 9,
     transition: '0.25s',
   },
+  firstLinkContainer: {
+    borderTop: `1px solid ${Colors.grey.dark}`,
+  },
   linkContainer: {
     display: 'block',
     justifyContent: 'center',

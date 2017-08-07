@@ -21,29 +21,25 @@ export default Radium(class Ad extends Component {
     }
   }
 
-  insStyles() {
-    return {
-      display: "block", 
-      height: this.props.height, 
-      width: '100%', 
-      minWidth: 250,
-    }
-  }
-
   render() {
     if(!this.props.ckey) { return false }
 
     let adParams = this.adParams()
 
+    let containerStyles = [Styles.container]
+    if(this.props.sidebar) {
+      containerStyles = containerStyles.concat([Styles.sidebar])
+    }
+
     return (
-      <div style={Styles.container}>
-        <ins className="adsbygoogle" 
-          style={this.insStyles()} 
+      <div style={containerStyles}>
+        <ins className="adsbygoogle"
+          style={[Styles.ad, { height: this.props.height }]}
           data-ad-format={adParams.format}
           data-ad-layout={adParams.layout}
           data-ad-layout-key={adParams.layoutKey}
-          data-ad-client={adParams.client} 
-          data-ad-slot={adParams.slot} 
+          data-ad-client={adParams.client}
+          data-ad-slot={adParams.slot}
         />
       </div>
     );

@@ -10,6 +10,14 @@ let styles = {
     '@media (max-device-width: 992px)': {
     },
   },
+  sidebar: {
+  	marginTop: 0,
+  },
+  ad: {
+    display: "block",
+    width: '100%',
+    minWidth: 250,
+  }
 }
 
 export default styles

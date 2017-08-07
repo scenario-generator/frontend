@@ -71,6 +71,10 @@ let Sidebar = class Sidebar extends Component {
   renderGenerator(generator) {
     let styles = _.merge({}, Styles.linkContainer, this.activeStyles(generator.slug))
 
+    if(generator.id == this.props.generators[0].id) {
+      styles = _.merge({}, styles, Styles.firstLinkContainer)
+    }
+
     return (
       <Link
         to={`/generators/${generator.slug}`}
@@ -87,13 +91,13 @@ let Sidebar = class Sidebar extends Component {
         <div style={Styles.content}>
           {this.renderRandomGenerator()}
           {this.renderSteamRandomizerLink()}
-          {this.props.generators.map(this.renderGenerator.bind(this))}
-          {this.renderFAQLink()}
-          <Ad 
-            sidebar 
+          <Ad
+            sidebar
             key='sidebar'
             ckey='sidebar'
           />
+          {this.props.generators.map(this.renderGenerator.bind(this))}
+          {this.renderFAQLink()}
         </div>
       </div>
     );
