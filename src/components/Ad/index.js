@@ -14,7 +14,11 @@ export default Radium(class Ad extends Component {
   }
 
   adParams() {
-    return ENV.ads
+    if(this.props.sidebar) {
+      return ENV.sidebarAd
+    } else {
+      return ENV.ads
+    }
   }
 
   insStyles() {

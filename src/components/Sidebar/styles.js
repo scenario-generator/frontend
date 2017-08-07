@@ -3,19 +3,21 @@ import Sizes from '../../constants/styles/sizes'
 
 let styles = {
   container: {
-    height: '100%',
     background: Colors.blue.dark,
-    width: `${Sizes.sidebar}%`,
-    position: 'absolute',
     height: '100%',
-    overflowY: 'scroll',
-    zIndex: 9,
-    transition: '0.25s',
+    display: 'flex',
+    flexDirection: 'column',
+    position: 'absolute',
+    width: `${Sizes.sidebar}%`,
     '@media (max-device-width: 992px)': {
       width: `${Sizes.sidebarMobile}%`,
     },
   },
   content: {
+    flex: 1,
+    overflowY: 'scroll',
+    zIndex: 9,
+    transition: '0.25s',
   },
   linkContainer: {
     display: 'block',
@@ -36,6 +38,14 @@ let styles = {
   activeLinkContainer: {
     background: Colors.blue.primary,
     cursor: 'default',
+  },
+  ad: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: 200,
+    width: '100%',
+    display: 'flex',
   }
 }
 

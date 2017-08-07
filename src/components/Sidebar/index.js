@@ -3,6 +3,9 @@ import { browserHistory } from 'react-router'
 import _ from 'lodash'
 import Radium from 'radium'
 import { Link } from 'react-router'
+
+import Ad from '../Ad'
+
 import Styles from './styles'
 
 let Sidebar = class Sidebar extends Component {
@@ -86,6 +89,11 @@ let Sidebar = class Sidebar extends Component {
           {this.renderSteamRandomizerLink()}
           {this.props.generators.map(this.renderGenerator.bind(this))}
           {this.renderFAQLink()}
+          <Ad 
+            sidebar 
+            key='sidebar'
+            ckey='sidebar'
+          />
         </div>
       </div>
     );
