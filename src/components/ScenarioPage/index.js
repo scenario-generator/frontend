@@ -76,20 +76,19 @@ export default Radium(class ScenarioPage extends Component {
     return (
       <Button
         onClick={() => rerollScenario(this.props)}
-        color={'orange'}>
-        {Strings.buttons.reroll}
-      </Button>
+        color={'orange'}
+        text={Strings.buttons.reroll}
+      />
     )
   }
-
 
   renderSaveButton() {
     return (
       <Button
         color={'purple'}
-        onClick={this.onSave.bind(this)}>
-        {Strings.buttons.save}
-      </Button>
+        onClick={this.onSave.bind(this)}
+        text={Strings.buttons.save}
+      />
     )
   }
 
@@ -98,9 +97,9 @@ export default Radium(class ScenarioPage extends Component {
       return (
         <Button
           href={this.props.generator.ad_link}
-          color={'red'}>
-          {Strings.buttons.getGame}
-        </Button>
+          color={'red'}
+          text={Strings.buttons.getGame}
+        />
       )
     }
     return <Button hidden />

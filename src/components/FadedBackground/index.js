@@ -32,7 +32,7 @@ export default Radium(class FadedBackground extends Component {
 
   render() {
     return (
-      <div {...this.props} style={Styles.container}>
+      <div style={Styles.container}>
         <div style={this.backgroundStyles()} />
         <div style={[Styles.children, this.props.style]}>{this.props.children}</div>
       </div>

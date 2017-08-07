@@ -43,9 +43,9 @@ export default Radium(class SubscriptionPage extends Component {
     return (
       <Button
         color={'orange'}
-        onClick={this.onSave.bind(this)}>
-        Subscribe
-      </Button>
+        onClick={this.onSave.bind(this)}
+        text={'Subscribe'}
+      />
     )
   }
 

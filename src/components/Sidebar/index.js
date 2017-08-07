@@ -29,7 +29,7 @@ let Sidebar = class Sidebar extends Component {
   }
 
   renderRandomGenerator() {
-    let styles = _.merge({}, Styles.linkContainer, this.activeStyles('random'))
+    let styles = _.merge({}, Styles.linkContainer, Styles.firstLinkContainer, this.activeStyles('random'))
 
     return (
       <div

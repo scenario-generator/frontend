@@ -5,12 +5,12 @@ import { Link } from 'react-router';
 import Styles from './styles'
 
 const Button = Radium(React.createClass ({
-
   getDefaultProps: function() {
     return {
       color: 'red',
       children: '',
       onClick: (() => alert('Assign an onClick to this button')),
+      attached: false,
     }
   },
 
@@ -37,10 +37,12 @@ const Button = Radium(React.createClass ({
     return (
       <span style={this.buttonStyle()}>
         <Link
-          {...this.props}
+          to={this.props.to}
           onClick={() => null}
           style={Styles.link}
-        />
+        >
+          {this.props.text}
+        </Link>
       </span>
     )
   },
@@ -48,10 +50,12 @@ const Button = Radium(React.createClass ({
   renderHrefButton: function() {
     return (
       <a
-        {...this.props}
+        href={this.props.href}
         style={this.buttonStyle()}
         onClick={false}
-      />
+      >
+        {this.props.text}
+      </a>
     )
   },
 
@@ -59,9 +63,10 @@ const Button = Radium(React.createClass ({
     return (
       <button
         onClick={this.props.onClick}
-        {...this.props}
         style={this.buttonStyle()}
-      />
+      >
+        {this.props.text}
+      </button>
     )
   },
 

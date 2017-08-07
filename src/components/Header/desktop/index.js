@@ -65,9 +65,9 @@ export default Radium(class DesktopHeader extends Component {
         <Button
           color={'green'}
           onClick={this.onSave.bind(this)}
-          attached>
-          {Strings.buttons.subscribeHeader}
-        </Button>
+          attached
+          text={Strings.buttons.subscribeHeader}
+        />
       </span>
     )
   }
@@ -77,9 +77,9 @@ export default Radium(class DesktopHeader extends Component {
       <span style={Styles.emailButton}>
         <Button
           color={'orange'}
-          href={`mailto:${ENV.email}`}>
-          {Strings.buttons.suggestion}
-        </Button>
+          href={`mailto:${ENV.email}`}
+          text={Strings.buttons.suggestion}
+        />
       </span>
     )
   }
