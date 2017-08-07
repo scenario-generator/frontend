@@ -10,7 +10,10 @@ import ENV             from '../../../env'
 
 export default Radium(class Ad extends Component {
   componentDidMount() {
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    }
+    catch(err) {}
   }
 
   adParams() {
