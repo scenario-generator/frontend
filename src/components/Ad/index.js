@@ -1,8 +1,6 @@
 // Libs
-import Dfp                  from 'react-simple-dfp';
 import Radium               from 'radium'
 import React, { Component } from 'react'
-import GoogleAd             from 'react-google-ad';
 
 // Constants
 import Styles          from './styles'
@@ -11,16 +9,38 @@ import ENV             from '../../../env'
 
 
 export default Radium(class Ad extends Component {
-  renderAdsense() {
-    return <GoogleAd {...ENV.ads} />
+  componentDidMount() {
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
+  }
+
+  adParams() {
+    return ENV.ads
+  }
+
+  insStyles() {
+    return {
+      display: "block", 
+      height: this.props.height, 
+      width: '100%', 
+      minWidth: 250,
+    }
   }
 
   render() {
     if(!this.props.ckey) { return false }
 
+    let adParams = this.adParams()
+
     return (
       <div style={Styles.container}>
-        {this.renderAdsense()}
+        <ins className="adsbygoogle" 
+          style={this.insStyles()} 
+          data-ad-format={adParams.format}
+          data-ad-layout={adParams.layout}
+          data-ad-layout-key={adParams.layoutKey}
+          data-ad-client={adParams.client} 
+          data-ad-slot={adParams.slot} 
+        />
       </div>
     );
   }
