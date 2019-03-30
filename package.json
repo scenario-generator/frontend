@@ -8,7 +8,7 @@
     "start": "cross-env NODE_ENV=development babel-node ./server.js",
     "build": "rimraf dist && webpack --config ./webpack.config.prod.js"
   },
-  "author": "Justin Jung <justinjung04@gmail.com>",
+  "author": "Daniel Lockhart <daniel@lockyy.com>",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^6.3.7",
