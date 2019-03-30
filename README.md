@@ -16,4 +16,3 @@ The Scenario Generator frontend is a universal ReactJS web app built to consume 
 - ReactRouter
 - Redux
 - PM2 for running on servers
-- Mina for deployment
