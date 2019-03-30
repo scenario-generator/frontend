@@ -21,4 +21,3 @@ In development you can copy it to .env and fill out the details there.
 - ReactJS
 - ReactRouter
 - Redux
-- PM2 for running on servers
