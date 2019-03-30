@@ -1,5 +1,4 @@
 import FaqQuestions from './FaqQuestions'
-import ENV from '../../env'
 
 let questions = {
   'What is Scenario Generator?':
@@ -9,7 +8,7 @@ let questions = {
   "Why did you build Scenario Generator?":
   "Scenario Generator was originally built as just a challenge generator for Dwarf Fortress. It gave you a location, challenge and a restriction to make things harder. The site sat inactive at dwarf-fortress-scenario-picker.herokuapp.com for about 7 or 8 months before I got the idea to make generators for other games as well. Whilst planning out a Minecraft and Crusader Kings 2 generator I realise it would be smarter to just make one system that could host generators for lots of games. A week or two later I bought scenariogenerator.net and launched the new site.",
   "Do you take suggestions for games?":
-  `Yes! Shoot me an email at <b>${ENV.email}</b> to let me know what game you want. I read every suggestion that is posted and have a long list of requested games that are going to make it onto the site. Unfortunately some games just aren't suited to the format and can't easily be translated into a generator, however most are so don't hesitate to send your suggestion.`,
+  `Yes! Shoot me an email at <b>${process.env.REACT_APP_CONTACT_EMAIL}</b> to let me know what game you want. I read every suggestion that is posted and have a long list of requested games that are going to make it onto the site. Unfortunately some games just aren't suited to the format and can't easily be translated into a generator, however most are so don't hesitate to send your suggestion.`,
   "Can I write my own generator?":
   "Not yet but currently I'm building some forms for creating generators. Once it's done I'll make it public and the best will become a part of the site.",
   "I want to give you my email to get updates. Will you spam me?":

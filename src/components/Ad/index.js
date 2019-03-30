@@ -5,7 +5,6 @@ import React, { Component } from 'react'
 // Constants
 import Styles          from './styles'
 import StyleConstants  from '../../constants/styles/css'
-import ENV             from '../../../env'
 
 
 export default Radium(class Ad extends Component {
@@ -18,9 +17,19 @@ export default Radium(class Ad extends Component {
 
   adParams() {
     if(this.props.sidebar) {
-      return ENV.sidebarAd
+      return {
+        client:    process.env.REACT_APP_SIDEBAR_AD_CLIENT,
+        slot:      process.env.REACT_APP_SIDEBAR_AD_SLOT,
+        layoutKey: process.env.REACT_APP_SIDEBAR_AD_LAYOUT_KEY,
+        layout:    process.env.REACT_APP_SIDEBAR_AD_LAYOUT,
+        format:    process.env.REACT_APP_SIDEBAR_AD_FORMAT,
+      }
     } else {
-      return ENV.ads
+      return {
+        client: process.env.REACT_APP_BANNER_AD_CLIENT,
+        slot:   process.env.REACT_APP_BANNER_AD_SLOT,
+        format: process.env.REACT_APP_BANNER_AD_FORMAT,
+      }
     }
   }
 

@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import App from './App';
 import Router from './Router';
-import ENV from '../../env'
 
 /**
  * Component is exported for conditional usage in Root.js
  */
-module.exports = class Root extends Component {
+class Root extends Component {
   componentDidMount() {
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: ENV.pageAds.client,
+        google_ad_client: process.env.REACT_APP_PAGE_ADS_CLIENT,
         enable_page_level_ads: true
       });
     }
@@ -32,3 +31,5 @@ module.exports = class Root extends Component {
     );
   }
 };
+
+export default Root;

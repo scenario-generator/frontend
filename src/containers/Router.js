@@ -4,15 +4,14 @@ import { Router, browserHistory } from 'react-router';
 import ReactGA from 'react-ga';
 import DocumentTitle from 'react-document-title';
 import Strings from '../constants/strings';
-import ENV from '../../env'
 import routes from '../routes';
 
 /**
  * Component is exported for conditional usage in Root.js
  */
-module.exports = class RouterComponent extends Component {
+class RouterComponent extends Component {
   componentDidMount() {
-    ReactGA.initialize(ENV.analytics.google);
+    ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_KEY);
   }
 
   logPageView() {
@@ -36,3 +35,5 @@ module.exports = class RouterComponent extends Component {
     );
   }
 };
+
+export default RouterComponent;

@@ -19,7 +19,8 @@ const finalCreateStore = compose(
   DevTools.instrument()
 )(createStore);
 
-module.exports = function configureStore(initialState) {
+
+const configureStore = function configureStore(initialState) {
   const store = finalCreateStore(rootReducer, initialState);
 
   // Hot reload reducers (requires Webpack or Browserify HMR to be enabled)
@@ -31,3 +32,5 @@ module.exports = function configureStore(initialState) {
 
   return store;
 };
+
+export default configureStore

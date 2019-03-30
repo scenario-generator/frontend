@@ -1,3 +1,1 @@
-import ENV from '../../../env'
-
-export default ENV.apiUrl;
+export default process.env.REACT_APP_API_URL;

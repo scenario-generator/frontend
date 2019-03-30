@@ -6,6 +6,8 @@ const finalCreateStore = compose(
   applyMiddleware(thunk)
 )(createStore);
 
-module.exports = function configureStore(initialState) {
+const configureStore = function configureStore(initialState) {
   return finalCreateStore(rootReducer, initialState);
 };
+
+export default configureStore

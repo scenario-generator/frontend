@@ -79,13 +79,9 @@ function createPage(html, store) {
         <!-- Redux initial data -->
         <script>window.__data=${serialize(store.getState())}</script>
       </head>
-      <body>
-
-        <body style="height: 100%; overflow: hidden">
-          <div id="app" style="height: 100%">${html}</div>
-          <script src='/bundle.js'></script>
-        </body>
-
+      <body style="height: 100%; overflow: hidden">
+        <div id="app" style="height: 100%">${html}</div>
+        <script src='/bundle.js'></script>
       </body>
     </html>
   `
