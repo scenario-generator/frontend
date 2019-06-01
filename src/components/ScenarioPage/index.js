@@ -23,18 +23,30 @@ import rerollScenario        from '../../utils/rerollScenario'
 import getScenarioActionHash from '../../utils/scenarioActionHash'
 
 export default Radium(class ScenarioPage extends Component {
+  get urlIDIsRandom() {
+    return this.props.params.id && this.props.params.id !== 'random'
+  }
+
+  get generatorLoaded() {
+    return this.props.generator
+  }
+
+  get generatorSlugMatchesURLId() {
+    return this.props.generator.slug === this.props.params.id
+  }
+
   // Lifecycle
 
   componentDidMount() {
-    if(this.props.generator.slug !== this.props.params.id) {
-      if(!(this.props.params.id === 'random' && this.props.generator)) {
+    if (!this.generatorSlugMatchesURLId) {
+      if (!this.urlIDIsRandom || !this.generatorLoaded) {
         fetchScenario(this.props, this.props.params.id, this.props.params.uuid)
       }
     }
   }
 
   componentWillReceiveProps(newProps) {
-    if(this.shouldReload(newProps.params.id, newProps.params.uuid)) {
+    if (this.shouldReload(newProps.params.id, newProps.params.uuid)) {
       let id = newProps.params.id || 'random';
       fetchScenario(this.props, id, newProps.params.uuid)
     }
@@ -55,10 +67,11 @@ export default Radium(class ScenarioPage extends Component {
   // Renderers
 
   documentTitle() {
-    if(this.props.params.id && this.props.params.id != 'random') {
+    if (this.props.params.id && !this.urlIDIsRandom) {
       let type = this.props.generator.kind || 'Scenario'
       return Strings.generatorPageTitle(type, this.props.generator.name)
     }
+
     return Strings.rootPageTitle
   }
 
