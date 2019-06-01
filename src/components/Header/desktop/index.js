@@ -3,8 +3,6 @@ import Radium               from 'radium';
 import { Link }             from 'react-router';
 import _                    from 'lodash';
 
-import ENV from '../../../../env'
-
 import Styles                from './styles'
 import StyleConstants        from '../../../constants/styles/css'
 import Icons                 from '../../../constants/images/icons'
@@ -77,7 +75,7 @@ export default Radium(class DesktopHeader extends Component {
       <span style={Styles.emailButton}>
         <Button
           color={'orange'}
-          href={`mailto:${ENV.email}`}
+          href={`mailto:${process.env.REACT_APP_CONTACT_EMAIL}`}
           text={Strings.buttons.suggestion}
         />
       </span>

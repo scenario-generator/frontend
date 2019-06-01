@@ -12,4 +12,4 @@ if (process.env.NODE_ENV === 'production') {
   loadedStore = require('./configureStore.dev');
 }
 
-export const configureStore = loadedStore;
+export const configureStore = loadedStore.default;
