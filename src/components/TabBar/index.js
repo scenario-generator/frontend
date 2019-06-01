@@ -27,7 +27,11 @@ export default Radium(class TabBar extends Component {
   }
 
   previousGenerator() {
-    return this.props.generator && this.props.generator.slug ? this.props.generator.slug : 'random'
+    if (this.props.generator && this.props.generator.slug) {
+      return this.props.generator.slug
+    }
+
+    return 'random'
   }
 
   transitionToScenario() {
