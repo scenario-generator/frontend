@@ -22,10 +22,10 @@ let Sidebar = class Sidebar extends Component {
   }
 
   activeStyles(buttonKey) {
-    if(this.props.path == `/${buttonKey}`) {
+    if(this.props.path === `/${buttonKey}`) {
       return Styles.activeLinkContainer
     }
-    if(this.props.id == buttonKey) {
+    if(this.props.id === buttonKey) {
       return Styles.activeLinkContainer
     }
     return {}
@@ -70,8 +70,9 @@ let Sidebar = class Sidebar extends Component {
 
   renderGenerator(generator) {
     let styles = _.merge({}, Styles.linkContainer, this.activeStyles(generator.slug))
+    let generatorIsFirstLink = generator.id === this.props.generators[0].id
 
-    if(generator.id == this.props.generators[0].id) {
+    if(generatorIsFirstLink) {
       styles = _.merge({}, styles, Styles.firstLinkContainer)
     }
 

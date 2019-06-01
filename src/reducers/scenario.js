@@ -46,7 +46,7 @@ const replaceColumn = function(scenario, replacementColumn, replacementColumnId)
 
   for(let i = 0; i < columns.length; i += 1) {
     let column = columns[i]
-    if(column.id == replacementColumnId) {
+    if(column.id === replacementColumnId) {
       scenario.columns[i] = replacementColumn
       return true
     }

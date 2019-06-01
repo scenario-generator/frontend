@@ -14,7 +14,7 @@ export default Radium(class MobileHeader extends Component {
   }
 
   onGeneratorPage() {
-    return this.props.path != '/generators' && this.props.path != '/subscribe'
+    return this.props.path !== '/generators' && this.props.path !== '/subscribe'
   }
 
   saveButtonVisible() {

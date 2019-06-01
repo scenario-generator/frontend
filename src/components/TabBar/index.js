@@ -20,9 +20,9 @@ const Tab = Radium(props => (
 export default Radium(class TabBar extends Component {
   active(tab) {
     return (
-      (tab == 'list' && this.props.path == '/generators') ||
-      (tab == 'subscribe' && this.props.path == '/subscribe') ||
-      (tab == 'scenario' && this.props.path != '/subscribe' && this.props.path != '/generators')
+      (tab === 'list' && this.props.path === '/generators') ||
+      (tab === 'subscribe' && this.props.path === '/subscribe') ||
+      (tab === 'scenario' && this.props.path !== '/subscribe' && this.props.path !== '/generators')
     )
   }
 
