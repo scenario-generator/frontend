@@ -40,9 +40,7 @@ let App = class App extends Component {
   }
 
   render() {
-    //document.body.style.backgroundColor = Colors.blue.primary;
-
-    const { generators, actions, children } = this.props;
+    const { children } = this.props;
 
     let path = this.props.location.pathname;
 
