@@ -28,7 +28,7 @@ export default Radium(class ScenarioPage extends Component {
   }
 
   get generatorLoaded() {
-    return this.props.generator
+    return this.props.generator.id
   }
 
   get generatorSlugMatchesURLId() {
