@@ -9,4 +9,4 @@ let reroll = function(props) {
   }
 }
 
-export default fetchScenario
+export default reroll
