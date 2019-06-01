@@ -30,7 +30,6 @@ let styles = {
     borderTop: `1px solid transparent`,
     borderBottom: `1px solid ${Colors.grey.dark}`,
     cursor: 'pointer',
-    textDecoration: 'none',
     color: Colors.blue.lighter,
     textDecoration: 'none',
     ':hover': {
@@ -48,7 +47,6 @@ let styles = {
     alignItems: 'center',
     minHeight: 200,
     width: '100%',
-    display: 'flex',
   }
 }
 
