@@ -28,6 +28,7 @@ export default Radium(class ScenarioPage extends Component {
     return (
       <span>
         <img
+          alt='Refresh Button'
           src={Icons.refresh}
           style={Styles.icon}
           onClick={this.rerollColumnFunction(this.props.generator.id, column.id)}
@@ -42,6 +43,7 @@ export default Radium(class ScenarioPage extends Component {
       return (
         <span>
           <img
+            alt={column.help}
             src={Icons.info}
             style={Styles.icon}
             data-tip={column.help}
@@ -70,6 +72,7 @@ export default Radium(class ScenarioPage extends Component {
     return (
       <span>
         <img
+          alt='Loading'
           src={Icons.spinner}
           style={Styles.icon}
         />

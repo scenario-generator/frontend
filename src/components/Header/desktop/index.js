@@ -85,6 +85,7 @@ export default Radium(class DesktopHeader extends Component {
       return (
         <span>
           <img
+            alt='Loading'
             src={Icons.spinner}
             style={Styles.icon}
           />

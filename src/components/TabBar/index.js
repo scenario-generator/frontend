@@ -9,6 +9,7 @@ const Tab = Radium(props => (
     style={[Styles.tab, props.active ? Styles.active : {}]}
     onClick={props.onClick}>
     <img
+      alt='Tab Icon'
       style={Styles.tabImage}
       src={Icons[props.icon][props.active ? 'white' : 'blue']}
     />

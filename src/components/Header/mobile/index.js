@@ -75,6 +75,7 @@ export default Radium(class MobileHeader extends Component {
       return (
         <span>
           <img
+            alt='Loading'
             src={Icons.spinner}
             style={Styles.icon}
           />
