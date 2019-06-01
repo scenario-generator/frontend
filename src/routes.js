@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, IndexRoute, Redirect, IndexRedirect } from 'react-router';
+import { Route, Redirect, IndexRedirect } from 'react-router';
 import App from './containers/App';
 import ScenarioContainer from './containers/Scenario';
 import SidebarContainer from './containers/Sidebar';

@@ -1,8 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import Radium from 'radium';
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import * as GeneratorActions from '../actions/GeneratorActions'
 import Colors from '../constants/styles/colors'
 import StyleConstants from '../constants/styles/css'
 import Sizes from '../constants/styles/sizes'

@@ -7,8 +7,6 @@ import StyleConstants        from '../../../constants/styles/css'
 import Icons                 from '../../../constants/images/icons'
 import rerollScenario        from '../../../utils/rerollScenario'
 import getScenarioActionHash from '../../../utils/scenarioActionHash'
-import Button                from '../../Button'
-import Strings               from '../../../constants/strings'
 
 export default Radium(class MobileHeader extends Component {
   onSave() {

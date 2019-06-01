@@ -1,6 +1,5 @@
 import React from 'react';
 import Radium from 'radium';
-import _ from 'lodash';
 import { Link } from 'react-router';
 import Styles from './styles'
 

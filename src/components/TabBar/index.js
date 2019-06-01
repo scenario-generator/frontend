@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import Radium from 'radium';
-import { Link, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import Styles from './styles'
-import Button from '../Button'
-import Strings from '../../constants/strings'
 import Icons from '../../constants/images/icons'
 
 const Tab = Radium(props => (

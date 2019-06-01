@@ -1,5 +1,3 @@
-import FaqQuestions from './FaqQuestions'
-
 let questions = {
   'What is Scenario Generator?':
   "Scenario Generator is a site I created for generating randomized characters, playthroughs, and scenarios for various games including Skyrim, Minecraft, and Crusader Kings 2. The site allows you to try games in ways you otherwise wouldn't and to challenge yourself to something new.",

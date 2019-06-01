@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Radium from 'radium'
-import { Link } from 'react-router'
 import FadedBackground from '../FadedBackground'
 import Styles from './styles'
 import CSS from '../../constants/styles/css'

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleRoot } from 'radium';
-import { Router, browserHistory } from 'react-router';
+import { Router } from 'react-router';
 import ReactGA from 'react-ga';
 import DocumentTitle from 'react-document-title';
 import Strings from '../constants/strings';

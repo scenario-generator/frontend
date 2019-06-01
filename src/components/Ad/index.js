@@ -4,8 +4,6 @@ import React, { Component } from 'react'
 
 // Constants
 import Styles          from './styles'
-import StyleConstants  from '../../constants/styles/css'
-
 
 export default Radium(class Ad extends Component {
   componentDidMount() {

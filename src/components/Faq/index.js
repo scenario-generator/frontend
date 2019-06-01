@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import Radium from 'radium'
 import _ from 'lodash'
-import { Link } from 'react-router'
 import FadedBackground from '../FadedBackground'
 import Styles from './styles'
-import StyleConstants from '../../constants/styles/css'
 import Strings from '../../constants/strings'
 
 let FAQ = class FAQ extends Component {

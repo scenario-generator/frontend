@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Radium from 'radium'
 import _ from 'lodash'
 import ReactTooltip from 'react-tooltip'
-import StyleConstants from '../../constants/styles/css'
 import Icons from '../../constants/images/icons'
 import Styles from './styles'
 

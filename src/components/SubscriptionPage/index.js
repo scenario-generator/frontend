@@ -2,7 +2,6 @@
 import _                    from 'lodash'
 import Radium               from 'radium'
 import DocumentTitle        from 'react-document-title'
-import { browserHistory }   from 'react-router'
 import React, { Component } from 'react'
 
 // Constants
