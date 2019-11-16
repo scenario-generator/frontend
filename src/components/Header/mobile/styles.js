@@ -35,8 +35,9 @@ let styles = {
     height: 0,
   },
   icon: {
-    height: 30,
+    height: 20,
     width: 42,
+    color: 'white'
   },
 }
 

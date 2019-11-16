@@ -6,6 +6,7 @@ const buttonColor = function(background, hover, active) {
     background: background,
     border: `2px solid black`,
     color: 'black',
+    outline: 'none',
     ':hover': {
       background: hover,
     },

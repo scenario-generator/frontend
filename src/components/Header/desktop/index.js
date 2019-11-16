@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import Radium               from 'radium';
 import { Link }             from 'react-router';
 import _                    from 'lodash';
+import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
+import { faSyncAlt }        from '@fortawesome/free-solid-svg-icons'
 
 import Styles                from './styles'
 import StyleConstants        from '../../../constants/styles/css'
-import Icons                 from '../../../constants/images/icons'
 import Button                from '../../Button'
 import Strings               from '../../../constants/strings'
 
@@ -84,10 +85,11 @@ export default Radium(class DesktopHeader extends Component {
     if(this.props.isFetching) {
       return (
         <span>
-          <img
+          <FontAwesomeIcon
+            icon={faSyncAlt}
             alt='Loading'
-            src={Icons.spinner}
             style={Styles.icon}
+            spin
           />
         </span>
       )

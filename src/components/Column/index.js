@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import Radium from 'radium'
 import _ from 'lodash'
 import ReactTooltip from 'react-tooltip'
-import Icons from '../../constants/images/icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSyncAlt } from '@fortawesome/free-solid-svg-icons'
+import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons'
 import Styles from './styles'
 
 export default Radium(class ScenarioPage extends Component {
@@ -21,17 +23,14 @@ export default Radium(class ScenarioPage extends Component {
   }
 
   renderReroll(column) {
-    if(this.props.fetching) {
-      return this.renderSpinner()
-    }
-
     return (
-      <span>
-        <img
+      <span
+        onClick={this.rerollColumnFunction(this.props.generator.id, column.id)}>
+        <FontAwesomeIcon
+          icon={faSyncAlt}
           alt='Refresh Button'
-          src={Icons.refresh}
           style={Styles.icon}
-          onClick={this.rerollColumnFunction(this.props.generator.id, column.id)}
+          spin={this.props.fetching}
         />
       </span>
     )
@@ -42,9 +41,8 @@ export default Radium(class ScenarioPage extends Component {
       let columnTooltipID = `column-info-${column.id}`
       return (
         <span>
-          <img
-            alt={column.help}
-            src={Icons.info}
+          <FontAwesomeIcon
+            icon={faQuestionCircle}
             style={Styles.icon}
             data-tip={column.help}
             data-for={columnTooltipID}
@@ -65,18 +63,6 @@ export default Radium(class ScenarioPage extends Component {
         key={`option-${id}-${text}-${Math.floor((Math.random() * 100000))}`}>
         {text}
       </div>
-    )
-  }
-
-  renderSpinner() {
-    return (
-      <span>
-        <img
-          alt='Loading'
-          src={Icons.spinner}
-          style={Styles.icon}
-        />
-      </span>
     )
   }
 

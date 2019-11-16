@@ -59,6 +59,7 @@ let styles = {
   icon: {
     height: 40,
     marginLeft: 10,
+    color: 'white'
   },
 }
 

@@ -2,18 +2,17 @@ import React, { Component } from 'react'
 import Radium from 'radium';
 import { browserHistory } from 'react-router';
 import _ from 'lodash'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGamepad, faDiceD20, faListUl } from '@fortawesome/free-solid-svg-icons'
 import Styles from './styles'
-import Icons from '../../constants/images/icons'
 
 const Tab = Radium(props => (
   <div
     style={[Styles.tab, props.active ? Styles.active : {}]}
     onClick={props.onClick}>
-    <img
-      alt='Tab Icon'
-      style={Styles.tabImage}
-      src={Icons[props.icon][props.active ? 'white' : 'blue']}
-    />
+    <div style={Styles.tabImage}>
+      <FontAwesomeIcon icon={props.icon} />
+    </div>
     {props.text}
   </div>
 ));
@@ -52,7 +51,7 @@ export default Radium(class TabBar extends Component {
       return (
         <Tab
           active={this.active('scenario')}
-          icon={'dice'}
+          icon={faGamepad}
           onClick={this.transitionToScenario.bind(this)}
           text={'Generator'}
         />
@@ -66,7 +65,7 @@ export default Radium(class TabBar extends Component {
         <Tab
           active={this.active('list')}
           onClick={() => browserHistory.push(`/generators`)}
-          icon={'list'}
+          icon={faListUl}
           text='All Games'
         />
 
@@ -74,7 +73,7 @@ export default Radium(class TabBar extends Component {
 
         <Tab
           active={this.active('subscribe')}
-          icon={'dice'}
+          icon={faDiceD20}
           onClick={this.navigateToRandomGenerator.bind(this)}
           text='Random Game'
         />

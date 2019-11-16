@@ -32,9 +32,7 @@ let styles = {
   },
   tabImage: {
     width: 20,
-    height: 20,
-    marginBottom: 5,
-    marginTop: 3,
+    height: 20
   }
 }
 

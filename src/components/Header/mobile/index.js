@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import Radium               from 'radium';
 import { Link }             from 'react-router';
+import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
+import { faSyncAlt }        from '@fortawesome/free-solid-svg-icons'
 
 import Styles                from './styles'
 import StyleConstants        from '../../../constants/styles/css'
-import Icons                 from '../../../constants/images/icons'
 import rerollScenario        from '../../../utils/rerollScenario'
 import getScenarioActionHash from '../../../utils/scenarioActionHash'
 
@@ -74,10 +75,11 @@ export default Radium(class MobileHeader extends Component {
     if(this.props.isFetching) {
       return (
         <span>
-          <img
+          <FontAwesomeIcon
+            icon={faSyncAlt}
             alt='Loading'
-            src={Icons.spinner}
             style={Styles.icon}
+            spin
           />
         </span>
       )

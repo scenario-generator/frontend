@@ -13,7 +13,7 @@ let styles = {
   columnName: {
     background: Colors.toRGB(Colors.grey.dark, 0.8),
     color: Colors.blue.lighter,
-    padding: 5,
+    padding: 7,
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -29,8 +29,8 @@ let styles = {
     height: 20,
     width: 20,
     cursor: 'pointer',
-    margin: '-5px -5px -5px -px',
-    padding: '5px 5px 0px',
+    marginLeft: 10,
+    color: 'white'
   },
   option: {
     background: Colors.toRGB(Colors.grey.dark, 0.6),
