@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Radium from 'radium';
 import { browserHistory } from 'react-router';
+import _ from 'lodash'
 import Styles from './styles'
 import Icons from '../../constants/images/icons'
 
@@ -38,6 +39,27 @@ export default Radium(class TabBar extends Component {
     browserHistory.push(`/generators/${this.previousGenerator()}`)
   }
 
+  randomGeneratorID() {
+    return _.sample(this.props.generators).slug;
+  }
+
+  navigateToRandomGenerator() {
+    browserHistory.push(`/generators/${this.randomGeneratorID()}`)
+  }
+
+  renderPreviousGeneratorTab () {
+    if (this.props.generator.id) {
+      return (
+        <Tab
+          active={this.active('scenario')}
+          icon={'dice'}
+          onClick={this.transitionToScenario.bind(this)}
+          text={'Generator'}
+        />
+      )
+    }
+  }
+
   render() {
     return (
       <div style={Styles.container}>
@@ -48,18 +70,13 @@ export default Radium(class TabBar extends Component {
           text='All Games'
         />
 
-        <Tab
-          active={this.active('scenario')}
-          icon={'dice'}
-          onClick={this.transitionToScenario.bind(this)}
-          text={this.props.generator.name || 'Random Game'}
-        />
+        { this.renderPreviousGeneratorTab() }
 
         <Tab
           active={this.active('subscribe')}
-          icon={'email'}
-          onClick={() => browserHistory.push(`/subscribe`)}
-          text='Subscribe'
+          icon={'dice'}
+          onClick={this.navigateToRandomGenerator.bind(this)}
+          text='Random Game'
         />
       </div>
     );

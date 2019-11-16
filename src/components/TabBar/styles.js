@@ -25,6 +25,7 @@ let styles = {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    width: '33%'
   },
   active: {
     color: 'white',

@@ -11,6 +11,7 @@ function mapStateToProps(state) {
     isFetching: state.generators.isFetching || state.scenario.isFetching,
     scenario: state.scenario.scenario,
     generator: state.scenario.generator,
+    generators: state.generators.generators,
   };
 }
 
