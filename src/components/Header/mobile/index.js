@@ -14,23 +14,27 @@ export default Radium(class MobileHeader extends Component {
     this.props.actions.saveScenario(getScenarioActionHash(this.props))
   }
 
-  onGeneratorPage() {
+  get onGeneratorPage () {
     return this.props.path !== '/generators' && this.props.path !== '/subscribe'
   }
 
-  saveButtonVisible() {
-    return this.onGeneratorPage()
+  get saveButtonVisible() {
+    return this.onGeneratorPage
   }
 
-  rerollButtonVisible() {
-    return this.onGeneratorPage()
+  get rerollButtonVisible () {
+    return this.onGeneratorPage
+  }
+
+  get isFetching () {
+    return this.props.isFetching
   }
 
   renderSaveButton() {
-    if(!this.onGeneratorPage()) { return }
+    if(!this.saveButtonVisible) { return }
 
     let extraStyles;
-    if(this.props.isFetching) {
+    if(this.isFetching) {
       extraStyles = Styles.hidden
     }
 
@@ -44,9 +48,9 @@ export default Radium(class MobileHeader extends Component {
   }
 
   renderRerollButton() {
-    if(!this.onGeneratorPage()) { return }
+    if(!this.rerollButtonVisible) { return }
 
-    if(this.props.isFetching) {
+    if(this.isFetching) {
       return this.renderSpinner(true)
     } else {
       return (
@@ -72,7 +76,7 @@ export default Radium(class MobileHeader extends Component {
   }
 
   renderSpinner() {
-    if(this.props.isFetching) {
+    if(this.isFetching) {
       return (
         <span>
           <FontAwesomeIcon
