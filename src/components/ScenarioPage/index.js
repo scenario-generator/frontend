@@ -22,7 +22,7 @@ import getScenarioActionHash from '../../utils/scenarioActionHash'
 
 export default Radium(class ScenarioPage extends Component {
   get urlIDIsRandom() {
-    return this.props.params.id && this.props.params.id !== 'random'
+    return this.props.params.id && this.props.params.id === 'random'
   }
 
   get generatorLoaded() {
