@@ -23,6 +23,7 @@ let backgrounds = {
   'Mass Effect 3':             ImagePath('backgrounds/masseffect3.jpg'),
   'Minecraft':                 ImagePath('backgrounds/minecraft.png'),
   'Mount and Blade':           ImagePath('backgrounds/mountain_glade.jpg'),
+  'Rimworld':                  ImagePath('backgrounds/rimworld.jpg'),
   'Orcs Must Die':             ImagePath('backgrounds/omd1.jpg'),
   'Orcs Must Die 2':           ImagePath('backgrounds/omd2.jpg'),
   'Pillars of Eternity':       ImagePath('backgrounds/pillars_of_eternity.jpg'),
