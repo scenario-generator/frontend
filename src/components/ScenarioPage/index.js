@@ -1,6 +1,5 @@
 // Libs
 import Radium               from 'radium'
-import DocumentTitle        from 'react-document-title'
 import React, { Component } from 'react'
 
 // Constants
@@ -10,6 +9,7 @@ import Backgrounds     from '../../constants/images/backgrounds'
 import StyleConstants  from '../../constants/styles/css'
 
 // Components
+import Head            from '../Head'
 import Button          from '../Button'
 import Scenario        from '../Scenario'
 import FadedBackground from '../FadedBackground'
@@ -31,6 +31,27 @@ export default Radium(class ScenarioPage extends Component {
 
   get generatorSlugMatchesURLId() {
     return this.props.generator.slug === this.props.params.id
+  }
+
+  get slug() {
+    return this.urlIDIsRandom ? 'random' : this.props.generator.slug
+  }
+
+  get uuid() {
+    return this.props.params.uuid
+  }
+
+  get canonicalPath () {
+    return `/generators/${this.slug}`
+  }
+
+  get documentTitle() {
+    if (this.props.params.id && !this.urlIDIsRandom) {
+      let type = this.props.generator.kind || 'Scenario'
+      return Strings.generatorPageTitle(type, this.props.generator.name)
+    }
+
+    return Strings.rootPageTitle
   }
 
   // Lifecycle
@@ -63,15 +84,6 @@ export default Radium(class ScenarioPage extends Component {
   }
 
   // Renderers
-
-  documentTitle() {
-    if (this.props.params.id && !this.urlIDIsRandom) {
-      let type = this.props.generator.kind || 'Scenario'
-      return Strings.generatorPageTitle(type, this.props.generator.name)
-    }
-
-    return Strings.rootPageTitle
-  }
 
   renderButtons() {
     return (
@@ -133,7 +145,12 @@ export default Radium(class ScenarioPage extends Component {
     }
 
     return (
-      <DocumentTitle title={this.documentTitle()}>
+      <div>
+        <Head
+          title={this.documentTitle}
+          canonicalPath={this.canonicalPath}
+        />
+
         <FadedBackground image={image}>
           {this.renderAd(generatorName)}
           {this.renderButtons()}
@@ -142,7 +159,7 @@ export default Radium(class ScenarioPage extends Component {
             scenario={this.props.scenario}
           />
         </FadedBackground>
-      </DocumentTitle>
+      </div>
     );
   }
 })

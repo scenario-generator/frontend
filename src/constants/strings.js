@@ -22,6 +22,7 @@ let strings = {
     suggestion: 'Send me an email'
   },
   faq: {
+    pageTitle: 'Scenario Generator | FAQs',
     title: 'FAQ',
     questions: FaqQuestions
   },

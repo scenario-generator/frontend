@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { StyleRoot } from 'radium';
-import { Router } from 'react-router';
-import ReactGA from 'react-ga';
-import DocumentTitle from 'react-document-title';
+import { StyleRoot }        from 'radium';
+import { Router }           from 'react-router';
+import ReactGA              from 'react-ga';
+
+// Constants
 import Strings from '../constants/strings';
+
+// Components
 import routes from '../routes';
+import Head   from '../components/Head'
 
 /**
  * Component is exported for conditional usage in Root.js
@@ -23,7 +27,9 @@ class RouterComponent extends Component {
     var history = this.props.history;
 
     return (
-      <DocumentTitle title={Strings.rootPageTitle}>
+      <div>
+        <Head title={Strings.rootPageTitle} />
+
         <StyleRoot>
           <Router
             history={history}
@@ -31,7 +37,7 @@ class RouterComponent extends Component {
             { routes }
           </Router>
         </StyleRoot>
-      </DocumentTitle>
+      </div>
     );
   }
 };
