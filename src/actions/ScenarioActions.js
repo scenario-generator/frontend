@@ -35,23 +35,48 @@ export function saveScenarioEvent() {
   };
 }
 
+function handleSuccessfulNewScenario(dispatch, response, currentId) {
+  dispatch(receiveScenario(response.data))
+
+  let canonicalSlug = response.data.generator.slug
+  if (currentId !== canonicalSlug) {
+    browserHistory.replace(`/generators/${canonicalSlug}`)
+  }
+}
+
+function catchErroredNewScenario () {
+  browserHistory.push('/generators/random')
+}
+
 export function newScenario(actionsHash) {
   return function (dispatch) {
     dispatch(requestScenario())
+
     return axios.get(RollScenarioPath(actionsHash.id))
-      .then(function(json) {
-        dispatch(receiveScenario(json.data))
-      })
+      .then((response) => handleSuccessfulNewScenario(dispatch, response, actionsHash.id))
+      .catch(catchErroredNewScenario)
   }
+}
+
+function handleSuccessfulLoadScenario(dispatch, response, currentId, currentUuid) {
+  dispatch(receiveScenario(response.data))
+
+  let canonicalSlug = response.data.generator.slug
+  if (currentId !== canonicalSlug) {
+    browserHistory.replace(`/generators/${canonicalSlug}/scenario/${currentUuid}`)
+  }
+}
+
+function catchErroredLoadScenario (generatorId) {
+  browserHistory.push(`/generators/${generatorId}`)
 }
 
 export function loadScenario(actionsHash) {
   return function (dispatch) {
     dispatch(requestScenario())
     return axios.get(LoadScenarioPath(actionsHash.id, actionsHash.uuid))
-      .then(json =>
-        dispatch(receiveScenario(json.data))
-      )
+      .then((response) => handleSuccessfulLoadScenario(dispatch, response, actionsHash.id, actionsHash.uuid))
+      .catch((error) => catchErroredLoadScenario(actionsHash.id))
   }
 }
 

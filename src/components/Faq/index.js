@@ -1,11 +1,26 @@
 import React, { Component } from 'react'
-import Radium from 'radium'
-import _ from 'lodash'
-import FadedBackground from '../FadedBackground'
-import Styles from './styles'
+import Radium               from 'radium'
+import _                    from 'lodash'
+
+// Constants
+import Styles  from './styles'
 import Strings from '../../constants/strings'
 
+// Components
+import Head            from '../Head'
+import FadedBackground from '../FadedBackground'
+
 let FAQ = class FAQ extends Component {
+  get canonicalPath () {
+    return '/faq'
+  }
+
+  get documentTitle() {
+    return Strings.faq.pageTitle
+  }
+
+  // Renderers
+
   renderQuestions() {
     return _.map(Strings.faq.questions, (answer, question) => (
       this.renderQuestion(question, answer)
@@ -27,11 +42,18 @@ let FAQ = class FAQ extends Component {
 
   render() {
     return (
-      <FadedBackground
-        random
-        style={Styles.container}>
-        {this.renderQuestions()}
-      </FadedBackground>
+      <div>
+        <Head
+          title={this.documentTitle}
+          canonicalPath={this.canonicalPath}
+        />
+
+        <FadedBackground
+          random
+          style={Styles.container}>
+          {this.renderQuestions()}
+        </FadedBackground>
+      </div>
     );
   }
 }

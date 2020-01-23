@@ -1,7 +1,6 @@
 // Libs
 import _                    from 'lodash'
 import Radium               from 'radium'
-import DocumentTitle        from 'react-document-title'
 import React, { Component } from 'react'
 
 // Constants
@@ -11,10 +10,15 @@ import StyleConstants  from '../../constants/styles/css'
 import Strings         from '../../constants/strings'
 
 // Components
+import Head            from '../Head'
 import Button          from '../Button'
 import FadedBackground from '../FadedBackground'
 
 export default Radium(class SubscriptionPage extends Component {
+  get canonicalPath () {
+    return '/subscribe'
+  }
+
   // Callbacks
 
   onSave() {
@@ -66,7 +70,12 @@ export default Radium(class SubscriptionPage extends Component {
     let formElementCSS = StyleConstants.forms.element;
 
     return (
-      <DocumentTitle title={Strings.subscribePageTitle}>
+      <div>
+        <Head
+          title={Strings.subscribePageTitle}
+          canonicalPath={this.canonicalPath}
+        />
+
         <FadedBackground
           image={Backgrounds['Endless Legend']}
           style={Styles.container}>
@@ -75,7 +84,7 @@ export default Radium(class SubscriptionPage extends Component {
           <div style={[formElementCSS, Styles.inputContainer]}>{this.renderEmailInput()}</div>
           <div style={formElementCSS}>{this.renderSubscribeButton()}</div>
         </FadedBackground>
-      </DocumentTitle>
+      </div>
     );
   }
 })
